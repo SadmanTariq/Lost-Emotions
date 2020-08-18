@@ -7,6 +7,10 @@ export var velocity_key = "velocity"
 
 var acting_body: KinematicBody2D
 
+func input(event: InputEvent):
+	if event.is_action_pressed("jump"):
+		fsm.change_to("Jumping")
+
 func physics_process(delta):
 	if !fsm.context.has(velocity_key):
 		fsm.context[velocity_key] = Vector2()

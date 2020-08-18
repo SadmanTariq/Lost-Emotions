@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://characters/player/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 550.801, 69.7212 )
 
 [node name="Main" type="Node"]
 
@@ -20,3 +23,9 @@ texture = ExtResource( 2 )
 [node name="icon3" type="Sprite" parent="World"]
 position = Vector2( 392.536, 109.068 )
 texture = ExtResource( 2 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="World"]
+position = Vector2( 0, 252.269 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/StaticBody2D"]
+shape = SubResource( 1 )
