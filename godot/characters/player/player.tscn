@@ -5,7 +5,7 @@
 [ext_resource path="res://characters/player/states/walking.gd" type="Script" id=3]
 [ext_resource path="res://characters/player/states/motion/idle.gd" type="Script" id=4]
 [ext_resource path="res://characters/player/states/motion/jumping.gd" type="Script" id=5]
-[ext_resource path="res://characters/player/states/motion/aerial.gd" type="Script" id=6]
+[ext_resource path="res://characters/player/states/motion/falling.gd" type="Script" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32, 32 )
@@ -38,6 +38,11 @@ jump_speed = 700
 [node name="Falling" type="Node" parent="StateMachine"]
 script = ExtResource( 6 )
 gravity = 2000
+num_jumps = 2
+
+[node name="Timer" type="Timer" parent="StateMachine/Falling"]
+one_shot = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
+[connection signal="walked_off_ledge" from="StateMachine/Walking" to="StateMachine/Falling" method="_on_Walking_walked_off_ledge"]

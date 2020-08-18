@@ -8,7 +8,7 @@ func enter():
 		fsm.context["jumps_left"] = num_jumps
 
 func physics_process(delta):
-	fsm.context[velocity_key].y += gravity * delta	
+	fsm.context[velocity_key].y += gravity * delta
 	.physics_process(delta)
 	
 	if acting_body.is_on_floor():
