@@ -33,8 +33,11 @@ func physics_process(_delta):
 func get_direction():
 	if Input.is_action_pressed("move_left"):
 		return Vector2.LEFT
-	else:
+	elif Input.is_action_pressed("move_right"):
 		return Vector2.RIGHT
+	else:
+		# move direction is enum where left is 0 and right is 1
+		return [Vector2.LEFT, Vector2.RIGHT][acting_body.move_direction]
 
 func can_dash():
 	return dash_available or acting_body.is_on_floor()
