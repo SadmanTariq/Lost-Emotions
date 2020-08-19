@@ -194,12 +194,12 @@ animations = [ {
 "frames": [ SubResource( 28 ), SubResource( 29 ) ],
 "loop": false,
 "name": "dash_start_left",
-"speed": 12.0
+"speed": 20.0
 }, {
 "frames": [ SubResource( 30 ), SubResource( 31 ) ],
 "loop": false,
 "name": "dash_start_right",
-"speed": 12.0
+"speed": 20.0
 } ]
 
 [sub_resource type="Gradient" id=33]
@@ -277,7 +277,7 @@ one_shot = true
 
 [node name="DashStarting" type="Node" parent="StateMachine"]
 script = ExtResource( 9 )
-duration = 0.17
+duration = 0.1
 dashing_state = NodePath("../Dashing")
 
 [node name="Timer" type="Timer" parent="StateMachine/DashStarting"]
