@@ -259,12 +259,12 @@ damping = 10
 
 [node name="Jumping" type="Node" parent="StateMachine"]
 script = ExtResource( 5 )
-gravity = 1000
-jump_speed = 700
+gravity = 2000
+jump_speed = 1000
 
 [node name="Falling" type="Node" parent="StateMachine"]
 script = ExtResource( 6 )
-gravity = 2000
+gravity = 3000
 
 [node name="Timer" type="Timer" parent="StateMachine/Falling"]
 one_shot = true
