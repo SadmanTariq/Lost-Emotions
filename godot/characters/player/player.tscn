@@ -22,7 +22,6 @@ code = "shader_type canvas_item;
 uniform vec2 amplitude_range;
 uniform vec2 scale_range;
 uniform float factor;
-//uniform bool active;
 
 void fragment(){
 	float amplitude, scale;
@@ -35,7 +34,7 @@ void fragment(){
 	
 	vec2 newUV = UV;
 	newUV.x = clamp(UV.x + sin(UV.y * scale + factor * 10.) * amplitude, 0.0, 0.15);
-	COLOR = texture(TEXTURE, newUV); 
+	COLOR = texture(TEXTURE, (factor != 0.0) ? newUV : UV);
 }"
 custom_defines = ""
 
