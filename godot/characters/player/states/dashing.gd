@@ -11,7 +11,7 @@ var acting_body: KinematicBody2D
 var velocity_key = "velocity"
 
 func enter():
-	if !dash_available and !acting_body.is_on_floor():
+	if !can_dash():
 		fsm.back()
 		return
 	
@@ -36,6 +36,9 @@ func get_direction():
 	else:
 		return Vector2.RIGHT
 
+func can_dash():
+	return dash_available or acting_body.is_on_floor()
+
 
 func _on_Player_touched_ground():
 	dash_available = true
@@ -44,4 +47,4 @@ func _on_Player_touched_ground():
 func _on_Timer_timeout():
 	emit_signal("dash_finished")
 	fsm.context[velocity_key] = speed * direction
-	fsm.back()
+	fsm.change_to("Walking")

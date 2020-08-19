@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=50 format=2]
 
 [ext_resource path="res://characters/player/spritesheets/walk_left.png" type="Texture" id=1]
 [ext_resource path="res://scripts/state_machine/state_machine.gd" type="Script" id=2]
@@ -8,9 +8,11 @@
 [ext_resource path="res://characters/player/states/motion/falling.gd" type="Script" id=6]
 [ext_resource path="res://characters/player/player.gd" type="Script" id=7]
 [ext_resource path="res://characters/player/states/dashing.gd" type="Script" id=8]
-[ext_resource path="res://characters/player/spritesheets/dash.png" type="Texture" id=9]
+[ext_resource path="res://characters/player/states/dash_starting.gd" type="Script" id=9]
 [ext_resource path="res://characters/player/spritesheets/walk_right.png" type="Texture" id=10]
 [ext_resource path="res://characters/player/sprite.gd" type="Script" id=11]
+[ext_resource path="res://characters/player/spritesheets/dash_right.png" type="Texture" id=12]
+[ext_resource path="res://characters/player/spritesheets/dash_left.png" type="Texture" id=13]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 22.2911
@@ -116,6 +118,46 @@ region = Rect2( 192, 0, 32, 64 )
 atlas = ExtResource( 1 )
 region = Rect2( 224, 0, 32, 64 )
 
+[sub_resource type="AtlasTexture" id=27]
+atlas = ExtResource( 13 )
+region = Rect2( 135, 0, 45, 64 )
+
+[sub_resource type="AtlasTexture" id=28]
+atlas = ExtResource( 13 )
+region = Rect2( 180, 0, 45, 64 )
+
+[sub_resource type="AtlasTexture" id=29]
+atlas = ExtResource( 13 )
+region = Rect2( 225, 0, 45, 64 )
+
+[sub_resource type="AtlasTexture" id=30]
+atlas = ExtResource( 12 )
+region = Rect2( 135, 0, 45, 64 )
+
+[sub_resource type="AtlasTexture" id=31]
+atlas = ExtResource( 12 )
+region = Rect2( 180, 0, 45, 64 )
+
+[sub_resource type="AtlasTexture" id=32]
+atlas = ExtResource( 12 )
+region = Rect2( 225, 0, 45, 64 )
+
+[sub_resource type="AtlasTexture" id=33]
+atlas = ExtResource( 13 )
+region = Rect2( 0, 0, 45, 64 )
+
+[sub_resource type="AtlasTexture" id=34]
+atlas = ExtResource( 13 )
+region = Rect2( 45, 0, 45, 64 )
+
+[sub_resource type="AtlasTexture" id=35]
+atlas = ExtResource( 12 )
+region = Rect2( 0, 0, 45, 64 )
+
+[sub_resource type="AtlasTexture" id=36]
+atlas = ExtResource( 12 )
+region = Rect2( 45, 0, 45, 64 )
+
 [sub_resource type="SpriteFrames" id=22]
 animations = [ {
 "frames": [ SubResource( 4 ) ],
@@ -137,6 +179,26 @@ animations = [ {
 "loop": true,
 "name": "walk_left",
 "speed": 15.0
+}, {
+"frames": [ SubResource( 27 ), SubResource( 28 ), SubResource( 29 ) ],
+"loop": true,
+"name": "dash_left",
+"speed": 12.0
+}, {
+"frames": [ SubResource( 30 ), SubResource( 31 ), SubResource( 32 ) ],
+"loop": true,
+"name": "dash_right",
+"speed": 12.0
+}, {
+"frames": [ SubResource( 33 ), SubResource( 34 ) ],
+"loop": false,
+"name": "dash_start_left",
+"speed": 12.0
+}, {
+"frames": [ SubResource( 35 ), SubResource( 36 ) ],
+"loop": false,
+"name": "dash_start_right",
+"speed": 12.0
 } ]
 
 [sub_resource type="Gradient" id=23]
@@ -206,6 +268,14 @@ script = ExtResource( 8 )
 [node name="Timer" type="Timer" parent="StateMachine/Dashing"]
 one_shot = true
 
+[node name="DashStarting" type="Node" parent="StateMachine"]
+script = ExtResource( 9 )
+duration = 0.17
+dashing_state = NodePath("../Dashing")
+
+[node name="Timer" type="Timer" parent="StateMachine/DashStarting"]
+one_shot = true
+
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
 
@@ -215,7 +285,6 @@ amount = 4
 lifetime = 0.2
 local_coords = false
 process_material = SubResource( 25 )
-texture = ExtResource( 9 )
 script = SubResource( 26 )
 [connection signal="touched_ground" from="." to="StateMachine/Dashing" method="_on_Player_touched_ground"]
 [connection signal="state_entered" from="StateMachine/Idle" to="Sprite" method="_on_Idle_state_entered"]
@@ -225,3 +294,5 @@ script = SubResource( 26 )
 [connection signal="state_entered" from="StateMachine/Dashing" to="DashParticles" method="_on_Dashing_state_entered"]
 [connection signal="state_entered" from="StateMachine/Dashing" to="Sprite" method="_on_Dashing_state_entered"]
 [connection signal="timeout" from="StateMachine/Dashing/Timer" to="StateMachine/Dashing" method="_on_Timer_timeout"]
+[connection signal="state_entered" from="StateMachine/DashStarting" to="Sprite" method="_on_DashStarting_state_entered"]
+[connection signal="timeout" from="StateMachine/DashStarting/Timer" to="StateMachine/DashStarting" method="_on_Timer_timeout"]

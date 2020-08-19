@@ -4,7 +4,7 @@ func input(event: InputEvent):
 	if event.is_action_pressed("jump"):
 		fsm.change_to("Jumping")
 	if event.is_action_pressed("dash"):
-		fsm.change_to("Dashing")
+		fsm.change_to("DashStarting")
 
 func physics_process(_delta):
 	var x = 0
