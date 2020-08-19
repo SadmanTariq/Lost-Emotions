@@ -30,6 +30,13 @@ config/name="Project-I"
 run/main_scene="res://main_scenes/main.tscn"
 config/icon="res://icon.png"
 
+[display]
+
+window/size/width=1920
+window/size/height=1024
+window/stretch/mode="2d"
+window/stretch/aspect="keep"
+
 [input]
 
 move_left={
