@@ -12,43 +12,45 @@
 [ext_resource path="res://characters/player/spritesheets/walk_right.png" type="Texture" id=10]
 [ext_resource path="res://characters/player/sprite.gd" type="Script" id=11]
 
-[sub_resource type="CapsuleShape2D" id=23]
+[sub_resource type="CapsuleShape2D" id=1]
 radius = 22.2911
 height = 83.8892
 
-[sub_resource type="Shader" id=26]
+[sub_resource type="Shader" id=2]
 code = "shader_type canvas_item;
 
 uniform vec2 amplitude_range;
 uniform vec2 scale_range;
 uniform float factor;
-uniform bool active;
+//uniform bool active;
 
 void fragment(){
 	float amplitude, scale;
+//	float factor = fract(TIME * 1.5);
+//	float x = TIME * 1.5;
+//	float factor = mix(fract(x), fract(-x), step(fract(x / 2.), 0.5));
 	
 	amplitude = mix(amplitude_range.x, amplitude_range.y, factor);
 	scale = mix(scale_range.x, scale_range.y, factor);
 	
 	vec2 newUV = UV;
-	newUV.x = clamp(UV.x + sin(UV.y * scale + TIME * .0) * amplitude, 0.0, 0.15);
-	COLOR = texture(TEXTURE, active ? newUV : UV); 
+	newUV.x = clamp(UV.x + sin(UV.y * scale + factor * 10.) * amplitude, 0.0, 0.15);
+	COLOR = texture(TEXTURE, newUV); 
 }"
 custom_defines = ""
 
-[sub_resource type="ShaderMaterial" id=27]
-shader = SubResource( 26 )
-shader_param/amplitude_range = Vector2( 0, 0.069 )
-shader_param/scale_range = Vector2( 0.072, 20 )
-shader_param/factor = null
-shader_param/active = true
+[sub_resource type="ShaderMaterial" id=3]
+shader = SubResource( 2 )
+shader_param/amplitude_range = Vector2( 0, 0.055 )
+shader_param/scale_range = Vector2( 0, 30 )
+shader_param/factor = 0.0
 
-[sub_resource type="AtlasTexture" id=24]
-atlas = ExtResource( 10 )
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 1 )
 region = Rect2( 0, 0, 32, 64 )
 
-[sub_resource type="AtlasTexture" id=25]
-atlas = ExtResource( 1 )
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 10 )
 region = Rect2( 0, 0, 32, 64 )
 
 [sub_resource type="AtlasTexture" id=6]
@@ -117,14 +119,14 @@ region = Rect2( 224, 0, 32, 64 )
 
 [sub_resource type="SpriteFrames" id=22]
 animations = [ {
-"frames": [ SubResource( 24 ) ],
-"loop": true,
-"name": "idle_right",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 25 ) ],
+"frames": [ SubResource( 4 ) ],
 "loop": true,
 "name": "idle_left",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 5 ) ],
+"loop": true,
+"name": "idle_right",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ) ],
@@ -138,21 +140,21 @@ animations = [ {
 "speed": 15.0
 } ]
 
-[sub_resource type="Gradient" id=2]
+[sub_resource type="Gradient" id=23]
 colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
 
-[sub_resource type="GradientTexture" id=3]
-gradient = SubResource( 2 )
+[sub_resource type="GradientTexture" id=24]
+gradient = SubResource( 23 )
 
-[sub_resource type="ParticlesMaterial" id=4]
+[sub_resource type="ParticlesMaterial" id=25]
 flag_disable_z = true
 spread = 0.0
 gravity = Vector3( 0, 0, 0 )
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
-color_ramp = SubResource( 3 )
+color_ramp = SubResource( 24 )
 
-[sub_resource type="GDScript" id=5]
+[sub_resource type="GDScript" id=26]
 script/source = "extends Particles2D
 
 func _on_Dashing_state_entered():
@@ -166,10 +168,10 @@ func _on_Dashing_dash_finished():
 script = ExtResource( 7 )
 
 [node name="Shape" type="CollisionShape2D" parent="."]
-shape = SubResource( 23 )
+shape = SubResource( 1 )
 
 [node name="Sprite" type="AnimatedSprite" parent="."]
-material = SubResource( 27 )
+material = SubResource( 3 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 22 )
 animation = "idle_right"
@@ -213,14 +215,14 @@ emitting = false
 amount = 4
 lifetime = 0.2
 local_coords = false
-process_material = SubResource( 4 )
+process_material = SubResource( 25 )
 texture = ExtResource( 9 )
-script = SubResource( 5 )
+script = SubResource( 26 )
 [connection signal="touched_ground" from="." to="StateMachine/Dashing" method="_on_Player_touched_ground"]
 [connection signal="state_entered" from="StateMachine/Idle" to="Sprite" method="_on_Idle_state_entered"]
 [connection signal="state_entered" from="StateMachine/Walking" to="Sprite" method="_on_Walking_state_entered"]
 [connection signal="walked_off_ledge" from="StateMachine/Walking" to="StateMachine/Falling" method="_on_Walking_walked_off_ledge"]
 [connection signal="dash_finished" from="StateMachine/Dashing" to="DashParticles" method="_on_Dashing_dash_finished"]
-[connection signal="state_entered" from="StateMachine/Dashing" to="Sprite" method="_on_Dashing_state_entered"]
 [connection signal="state_entered" from="StateMachine/Dashing" to="DashParticles" method="_on_Dashing_state_entered"]
+[connection signal="state_entered" from="StateMachine/Dashing" to="Sprite" method="_on_Dashing_state_entered"]
 [connection signal="timeout" from="StateMachine/Dashing/Timer" to="StateMachine/Dashing" method="_on_Timer_timeout"]
