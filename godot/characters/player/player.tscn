@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://characters/player/spritesheets/walk_left.png" type="Texture" id=1]
 [ext_resource path="res://scripts/state_machine/state_machine.gd" type="Script" id=2]
@@ -15,6 +15,33 @@
 [sub_resource type="CapsuleShape2D" id=23]
 radius = 22.2911
 height = 83.8892
+
+[sub_resource type="Shader" id=26]
+code = "shader_type canvas_item;
+
+uniform vec2 amplitude_range;
+uniform vec2 scale_range;
+uniform float factor;
+uniform bool active;
+
+void fragment(){
+	float amplitude, scale;
+	
+	amplitude = mix(amplitude_range.x, amplitude_range.y, factor);
+	scale = mix(scale_range.x, scale_range.y, factor);
+	
+	vec2 newUV = UV;
+	newUV.x = clamp(UV.x + sin(UV.y * scale + TIME * .0) * amplitude, 0.0, 0.15);
+	COLOR = texture(TEXTURE, active ? newUV : UV); 
+}"
+custom_defines = ""
+
+[sub_resource type="ShaderMaterial" id=27]
+shader = SubResource( 26 )
+shader_param/amplitude_range = Vector2( 0, 0.069 )
+shader_param/scale_range = Vector2( 0.072, 20 )
+shader_param/factor = null
+shader_param/active = true
 
 [sub_resource type="AtlasTexture" id=24]
 atlas = ExtResource( 10 )
@@ -142,6 +169,7 @@ script = ExtResource( 7 )
 shape = SubResource( 23 )
 
 [node name="Sprite" type="AnimatedSprite" parent="."]
+material = SubResource( 27 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 22 )
 animation = "idle_right"
