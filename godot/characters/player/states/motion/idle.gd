@@ -3,6 +3,8 @@ extends GameState
 func input(event: InputEvent):
 	if event.is_action_pressed("jump"):
 		fsm.change_to("Jumping")
+	if event.is_action_pressed("dash"):
+		fsm.change_to("Dashing")
 
 func physics_process(_delta):
 	var x = 0
@@ -13,3 +15,5 @@ func physics_process(_delta):
 		
 	if x != 0:
 		fsm.change_to("Walking")
+	if fsm.context.has("velocity") and fsm.context["velocity"].length() > 70:
+		fsm.change_to(("Walking"))
