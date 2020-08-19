@@ -26,6 +26,11 @@ func physics_process(delta):
 		move_x += 1
 	if Input.is_action_pressed("move_left"):
 		move_x -= 1
+	
+	if move_x > 0:
+		acting_body.move_direction = acting_body.RIGHT
+	elif move_x < 0:
+		acting_body.move_direction = acting_body.LEFT
 
 	vel.x -= damping * vel.x * delta
 	vel.x += acceleration * delta * move_x

@@ -16,6 +16,12 @@ func enter():
 		return
 	
 	direction = get_direction()
+	
+	if direction.x > 0:
+		acting_body.move_direction = acting_body.RIGHT
+	elif direction.x < 0:
+		acting_body.move_direction = acting_body.LEFT
+	
 	dash_available = false
 	
 	$Timer.start(duration)
