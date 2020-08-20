@@ -36,6 +36,10 @@ config/name="Project-I"
 run/main_scene="res://main_scenes/main.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Globals="*res://scripts/globals.gd"
+
 [display]
 
 window/size/width=1280

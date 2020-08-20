@@ -14,6 +14,9 @@ export var move_direction = RIGHT setget _set_move_direction
 
 var _grounded = false
 
+func _ready():
+	Globals.player = self
+
 func _physics_process(_delta):
 	if !_grounded and is_on_floor():
 		emit_signal("touched_ground")
