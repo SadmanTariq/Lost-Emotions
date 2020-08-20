@@ -11,7 +11,9 @@ const animations = {
 	"jump": {LEFT: "jump_left", RIGHT: "jump_right"},
 	"fall": {LEFT: "fall_left", RIGHT: "fall_right"},
 	"dash": {LEFT: "dash_left", RIGHT: "dash_right"},
-	"dash_start": {LEFT: "dash_start_left", RIGHT: "dash_start_right"}
+	"dash_start": {LEFT: "dash_start_left", RIGHT: "dash_start_right"},
+	"wall_hug": {LEFT: "wall_hug_left", RIGHT: "wall_hug_right"},
+	"teleport": {LEFT: "teleport_left", RIGHT: "teleport_right"},
 }
 
 var action = "idle" setget _set_action
@@ -57,4 +59,8 @@ func _on_Falling_state_entered():
 
 
 func _on_TeleportOut_state_entered():
-	_set_action("idle")
+	_set_action("teleport")
+
+
+func _on_WallHugging_state_entered():
+	_set_action("wall_hug")
