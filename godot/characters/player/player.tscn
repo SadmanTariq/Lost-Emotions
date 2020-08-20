@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=2]
+[gd_scene load_steps=65 format=2]
 
 [ext_resource path="res://characters/player/spritesheets/walk_left.png" type="Texture" id=1]
 [ext_resource path="res://scripts/state_machine/state_machine.gd" type="Script" id=2]
@@ -19,6 +19,9 @@
 [ext_resource path="res://characters/player/spritesheets/jump_left.png" type="Texture" id=17]
 [ext_resource path="res://characters/player/spritesheets/jump_right.png" type="Texture" id=18]
 [ext_resource path="res://characters/player/spritesheets/fall.png" type="Texture" id=19]
+[ext_resource path="res://characters/player/states/teleport_out.gd" type="Script" id=20]
+[ext_resource path="res://characters/player/states/teleport_in.gd" type="Script" id=21]
+[ext_resource path="res://characters/player/opening_finder/opening_finder.tscn" type="PackedScene" id=22]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 22.2911
@@ -275,6 +278,7 @@ frame_1/texture = ExtResource( 14 )
 frame_1/delay_sec = 0.0
 
 [node name="Player" type="KinematicBody2D"]
+collision_mask = 0
 script = ExtResource( 7 )
 
 [node name="Shape" type="CollisionShape2D" parent="."]
@@ -292,12 +296,12 @@ script = ExtResource( 11 )
 script = ExtResource( 2 )
 acting_body_path = NodePath("..")
 
-[node name="Idle" type="Node" parent="StateMachine"]
-script = ExtResource( 4 )
-
 [node name="Walking" type="Node" parent="StateMachine"]
 script = ExtResource( 3 )
 damping = 10
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource( 4 )
 
 [node name="Jumping" type="Node" parent="StateMachine"]
 script = ExtResource( 5 )
@@ -325,8 +329,20 @@ dashing_state = NodePath("../Dashing")
 [node name="Timer" type="Timer" parent="StateMachine/DashStarting"]
 one_shot = true
 
+[node name="TeleportOut" type="Node" parent="StateMachine"]
+script = ExtResource( 20 )
+sprite = NodePath("../../Sprite")
+
+[node name="TeleportIn" type="Node" parent="StateMachine"]
+script = ExtResource( 21 )
+distance = 500
+sprite = NodePath("../../Sprite")
+
+[node name="OpeningFinder" parent="StateMachine/TeleportIn" instance=ExtResource( 22 )]
+
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
+smoothing_enabled = true
 
 [node name="DashParticles" type="Particles2D" parent="."]
 emitting = false
@@ -336,10 +352,11 @@ local_coords = false
 process_material = SubResource( 39 )
 texture = SubResource( 40 )
 script = ExtResource( 16 )
+[connection signal="touched_ground" from="." to="StateMachine/TeleportOut" method="_on_Player_touched_ground"]
 [connection signal="touched_ground" from="." to="StateMachine/Dashing" method="_on_Player_touched_ground"]
-[connection signal="state_entered" from="StateMachine/Idle" to="Sprite" method="_on_Idle_state_entered"]
 [connection signal="state_entered" from="StateMachine/Walking" to="Sprite" method="_on_Walking_state_entered"]
 [connection signal="walked_off_ledge" from="StateMachine/Walking" to="StateMachine/Falling" method="_on_Walking_walked_off_ledge"]
+[connection signal="state_entered" from="StateMachine/Idle" to="Sprite" method="_on_Idle_state_entered"]
 [connection signal="state_entered" from="StateMachine/Jumping" to="Sprite" method="_on_Jumping_state_entered"]
 [connection signal="state_entered" from="StateMachine/Falling" to="Sprite" method="_on_Falling_state_entered"]
 [connection signal="dash_finished" from="StateMachine/Dashing" to="DashParticles" method="_on_Dashing_dash_finished"]
@@ -348,3 +365,4 @@ script = ExtResource( 16 )
 [connection signal="timeout" from="StateMachine/Dashing/Timer" to="StateMachine/Dashing" method="_on_Timer_timeout"]
 [connection signal="state_entered" from="StateMachine/DashStarting" to="Sprite" method="_on_DashStarting_state_entered"]
 [connection signal="timeout" from="StateMachine/DashStarting/Timer" to="StateMachine/DashStarting" method="_on_Timer_timeout"]
+[connection signal="state_entered" from="StateMachine/TeleportOut" to="Sprite" method="_on_TeleportOut_state_entered"]

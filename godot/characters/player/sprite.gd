@@ -54,3 +54,7 @@ func _on_Jumping_state_entered():
 
 func _on_Falling_state_entered():
 	_set_action("fall")
+
+
+func _on_TeleportOut_state_entered():
+	_set_action("idle")
