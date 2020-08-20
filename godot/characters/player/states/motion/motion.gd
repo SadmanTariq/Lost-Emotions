@@ -42,4 +42,7 @@ func physics_process(delta):
 	vel = acting_body.move_and_slide(vel, Vector2.UP)
 
 	fsm.context[velocity_key] = vel
+	
+	if acting_body.is_on_wall():
+		fsm.change_to("WallHugging")
 
