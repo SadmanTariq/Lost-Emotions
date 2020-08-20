@@ -456,7 +456,6 @@ material = SubResource( 3 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 38 )
 animation = "idle_right"
-frame = 1
 playing = true
 script = ExtResource( 11 )
 [connection signal="touched_ground" from="." to="StateMachine/TeleportOut" method="_on_Player_touched_ground"]
