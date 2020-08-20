@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=2]
+[gd_scene load_steps=77 format=2]
 
 [ext_resource path="res://characters/player/spritesheets/walk_left.png" type="Texture" id=1]
 [ext_resource path="res://scripts/state_machine/state_machine.gd" type="Script" id=2]
@@ -25,10 +25,34 @@
 [ext_resource path="res://characters/player/states/wall_hugging.gd" type="Script" id=23]
 [ext_resource path="res://characters/player/spritesheets/idle.png" type="Texture" id=24]
 [ext_resource path="res://characters/player/spritesheets/wall_hug.png" type="Texture" id=25]
+[ext_resource path="res://characters/player/grapple_line.gd" type="Script" id=26]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 22.2911
 height = 83.8892
+
+[sub_resource type="Gradient" id=39]
+offsets = PoolRealArray( 0.711111, 1 )
+colors = PoolColorArray( 1, 1, 1, 0.741176, 1, 1, 1, 0 )
+
+[sub_resource type="GradientTexture" id=40]
+gradient = SubResource( 39 )
+
+[sub_resource type="ParticlesMaterial" id=41]
+flag_disable_z = true
+spread = 0.0
+gravity = Vector3( 0, 0, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+color_ramp = SubResource( 40 )
+
+[sub_resource type="AnimatedTexture" id=42]
+frames = 2
+pause = true
+fps = 0.0
+frame_0/texture = ExtResource( 15 )
+frame_1/texture = ExtResource( 14 )
+frame_1/delay_sec = 0.0
 
 [sub_resource type="Shader" id=2]
 code = "shader_type canvas_item;
@@ -309,43 +333,9 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="Gradient" id=39]
-offsets = PoolRealArray( 0.711111, 1 )
-colors = PoolColorArray( 1, 1, 1, 0.741176, 1, 1, 1, 0 )
-
-[sub_resource type="GradientTexture" id=40]
-gradient = SubResource( 39 )
-
-[sub_resource type="ParticlesMaterial" id=41]
-flag_disable_z = true
-spread = 0.0
-gravity = Vector3( 0, 0, 0 )
-orbit_velocity = 0.0
-orbit_velocity_random = 0.0
-color_ramp = SubResource( 40 )
-
-[sub_resource type="AnimatedTexture" id=42]
-frames = 2
-pause = true
-fps = 0.0
-frame_0/texture = ExtResource( 15 )
-frame_1/texture = ExtResource( 14 )
-frame_1/delay_sec = 0.0
-
 [node name="Player" type="KinematicBody2D"]
 collision_mask = 0
 script = ExtResource( 7 )
-
-[node name="Shape" type="CollisionShape2D" parent="."]
-shape = SubResource( 1 )
-
-[node name="Sprite" type="AnimatedSprite" parent="."]
-material = SubResource( 3 )
-scale = Vector2( 2, 2 )
-frames = SubResource( 38 )
-animation = "teleport_left"
-playing = true
-script = ExtResource( 11 )
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource( 2 )
@@ -400,9 +390,17 @@ script = ExtResource( 23 )
 slide_speed = 300
 jump_speed_x = 600
 
-[node name="Camera2D" type="Camera2D" parent="."]
-current = true
-smoothing_enabled = true
+[node name="Shape" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="GrappleLine" type="Line2D" parent="."]
+position = Vector2( 22.7785, -2.64866 )
+points = PoolVector2Array( 0, 0, 0, 0 )
+width = 2.0
+default_color = Color( 0.290196, 0.988235, 0.996078, 1 )
+script = ExtResource( 26 )
+
+[node name="Tween" type="Tween" parent="GrappleLine"]
 
 [node name="DashParticles" type="Particles2D" parent="."]
 emitting = false
@@ -412,6 +410,19 @@ local_coords = false
 process_material = SubResource( 41 )
 texture = SubResource( 42 )
 script = ExtResource( 16 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+smoothing_enabled = true
+
+[node name="Sprite" type="AnimatedSprite" parent="."]
+material = SubResource( 3 )
+scale = Vector2( 2, 2 )
+frames = SubResource( 38 )
+animation = "idle_right"
+frame = 2
+playing = true
+script = ExtResource( 11 )
 [connection signal="touched_ground" from="." to="StateMachine/TeleportOut" method="_on_Player_touched_ground"]
 [connection signal="touched_ground" from="." to="StateMachine/Dashing" method="_on_Player_touched_ground"]
 [connection signal="state_entered" from="StateMachine/Walking" to="Sprite" method="_on_Walking_state_entered"]
@@ -427,3 +438,4 @@ script = ExtResource( 16 )
 [connection signal="timeout" from="StateMachine/DashStarting/Timer" to="StateMachine/DashStarting" method="_on_Timer_timeout"]
 [connection signal="state_entered" from="StateMachine/TeleportOut" to="Sprite" method="_on_TeleportOut_state_entered"]
 [connection signal="state_entered" from="StateMachine/WallHugging" to="Sprite" method="_on_WallHugging_state_entered"]
+[connection signal="tween_completed" from="GrappleLine/Tween" to="GrappleLine" method="_on_Tween_tween_completed"]

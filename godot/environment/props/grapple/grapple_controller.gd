@@ -22,8 +22,8 @@ func _physics_process(_delta):
 	for anchor in get_tree().get_nodes_in_group("grapple_anchor"):
 		if anchor == nearest_anchor:
 			anchor.active = true
-			anchor.add_to_group("active")
+			anchor.add_to_group("active_anchor")
 		else:
 			anchor.active = false
-			if anchor.is_in_group("active"):
-				anchor.remove_from_group("active")
+			if anchor.is_in_group("active_anchor"):
+				anchor.remove_from_group("active_anchor")
