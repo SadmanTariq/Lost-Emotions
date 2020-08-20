@@ -1,4 +1,4 @@
-[gd_scene load_steps=77 format=2]
+[gd_scene load_steps=84 format=2]
 
 [ext_resource path="res://characters/player/spritesheets/walk_left.png" type="Texture" id=1]
 [ext_resource path="res://scripts/state_machine/state_machine.gd" type="Script" id=2]
@@ -26,6 +26,9 @@
 [ext_resource path="res://characters/player/spritesheets/idle.png" type="Texture" id=24]
 [ext_resource path="res://characters/player/spritesheets/wall_hug.png" type="Texture" id=25]
 [ext_resource path="res://characters/player/grapple_line.gd" type="Script" id=26]
+[ext_resource path="res://characters/player/states/grapple_starting.gd" type="Script" id=27]
+[ext_resource path="res://characters/player/spritesheets/grapple_start_right.png" type="Texture" id=28]
+[ext_resource path="res://characters/player/states/grappling.gd" type="Script" id=29]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 22.2911
@@ -238,6 +241,22 @@ region = Rect2( 192, 0, 32, 64 )
 atlas = ExtResource( 10 )
 region = Rect2( 224, 0, 32, 64 )
 
+[sub_resource type="AtlasTexture" id=53]
+atlas = ExtResource( 28 )
+region = Rect2( 0, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=54]
+atlas = ExtResource( 28 )
+region = Rect2( 64, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=55]
+atlas = ExtResource( 28 )
+region = Rect2( 128, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=56]
+atlas = ExtResource( 28 )
+region = Rect2( 192, 0, 64, 64 )
+
 [sub_resource type="AtlasTexture" id=50]
 atlas = ExtResource( 25 )
 region = Rect2( 32, 0, 32, 64 )
@@ -317,6 +336,11 @@ animations = [ {
 "name": "walk_right",
 "speed": 15.0
 }, {
+"frames": [ SubResource( 53 ), SubResource( 54 ), SubResource( 55 ), SubResource( 56 ) ],
+"loop": false,
+"name": "grapple_start_right",
+"speed": 12.0
+}, {
 "frames": [ SubResource( 50 ) ],
 "loop": false,
 "name": "wall_hug_left",
@@ -390,11 +414,23 @@ script = ExtResource( 23 )
 slide_speed = 300
 jump_speed_x = 600
 
+[node name="GrappleStarting" type="Node" parent="StateMachine"]
+script = ExtResource( 27 )
+duration = 0.27
+
+[node name="Timer" type="Timer" parent="StateMachine/GrappleStarting"]
+one_shot = true
+
+[node name="Grappling" type="Node" parent="StateMachine"]
+script = ExtResource( 29 )
+acceleration = 500
+start_speed = 1200
+
 [node name="Shape" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
 [node name="GrappleLine" type="Line2D" parent="."]
-position = Vector2( 22.7785, -2.64866 )
+position = Vector2( 16.0967, -15.1212 )
 points = PoolVector2Array( 0, 0, 0, 0 )
 width = 2.0
 default_color = Color( 0.290196, 0.988235, 0.996078, 1 )
@@ -420,7 +456,7 @@ material = SubResource( 3 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 38 )
 animation = "idle_right"
-frame = 2
+frame = 1
 playing = true
 script = ExtResource( 11 )
 [connection signal="touched_ground" from="." to="StateMachine/TeleportOut" method="_on_Player_touched_ground"]
@@ -438,4 +474,8 @@ script = ExtResource( 11 )
 [connection signal="timeout" from="StateMachine/DashStarting/Timer" to="StateMachine/DashStarting" method="_on_Timer_timeout"]
 [connection signal="state_entered" from="StateMachine/TeleportOut" to="Sprite" method="_on_TeleportOut_state_entered"]
 [connection signal="state_entered" from="StateMachine/WallHugging" to="Sprite" method="_on_WallHugging_state_entered"]
-[connection signal="tween_completed" from="GrappleLine/Tween" to="GrappleLine" method="_on_Tween_tween_completed"]
+[connection signal="state_entered" from="StateMachine/GrappleStarting" to="Sprite" method="_on_GrappleStarting_state_entered"]
+[connection signal="state_entered" from="StateMachine/GrappleStarting" to="GrappleLine" method="activate"]
+[connection signal="timeout" from="StateMachine/GrappleStarting/Timer" to="StateMachine/GrappleStarting" method="_on_Timer_timeout"]
+[connection signal="finished" from="StateMachine/Grappling" to="GrappleLine" method="deactivate"]
+[connection signal="state_entered" from="StateMachine/Grappling" to="GrappleLine" method="_on_Grappling_state_entered"]

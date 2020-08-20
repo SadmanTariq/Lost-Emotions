@@ -8,7 +8,7 @@ func _ready():
 	set_process(false)
 
 func _process(_delta):
-	end_point = _target.global_position - global_position
+	_set_end_point(_target.global_position - global_position)
 
 func activate(duration=0.1):
 	_target = get_tree().get_nodes_in_group("active_anchor")[0]
@@ -23,6 +23,7 @@ func activate(duration=0.1):
 
 func deactivate():
 	visible = false
+	set_process(false)
 #	$Tween.interpolate_property(self, "start_point", start_point, end_point,
 #								duration)
 #	$Tween.start()
@@ -35,25 +36,17 @@ func deactivate():
 #		deactivate()
 
 func _set_start_point(value):
-	start_point = value
 	points[0] = value
 
 func _get_start_point():
 	return points[0]
 
 func _set_end_point(value):
-	end_point = value
 	points[1] = value
 
 func _get_end_point():
 	return points[1]
 
 
-func _on_Tween_tween_completed(_object, key):
-	# For deactivation
-	if key == "start_point":
-		visible = false
-		
-	# For activation
-	elif key == "end_point":
-		pass
+func _on_Grappling_state_entered():
+	set_process(true)

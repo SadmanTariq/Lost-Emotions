@@ -18,6 +18,8 @@ func input(event: InputEvent):
 		fsm.change_to("DashStarting")
 	if event.is_action_pressed("teleport"):
 		fsm.change_to("TeleportOut")
+	if event.is_action_pressed("grapple"):
+		fsm.change_to("GrappleStarting")
 
 func physics_process(delta):
 	var vel: Vector2 = fsm.context[velocity_key]
