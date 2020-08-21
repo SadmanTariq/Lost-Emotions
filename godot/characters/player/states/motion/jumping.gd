@@ -8,7 +8,8 @@ func enter():
 		fsm.back()
 		return
 	
-	fsm.context["jumps_left"] -= 1
+	if !acting_body.is_on_floor():
+		fsm.context["jumps_left"] -= 1
 	fsm.context[velocity_key].y = -jump_speed
 
 func physics_process(delta):

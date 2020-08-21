@@ -8,6 +8,7 @@ export var speed = 2000
 var dash_available = true
 var direction: Vector2
 var acting_body: KinematicBody2D
+var velocity: Vector2
 var velocity_key = "velocity"
 
 func enter():
@@ -24,11 +25,12 @@ func enter():
 	
 	dash_available = false
 	
+	velocity = direction * speed
+	
 	$Timer.start(duration)
 
 func physics_process(_delta):
-# warning-ignore:return_value_discarded
-	acting_body.move_and_slide(direction * speed)
+	velocity = acting_body.move_and_slide(velocity)
 
 func get_direction():
 	if Input.is_action_pressed("move_left"):
@@ -49,5 +51,5 @@ func _on_Player_touched_ground():
 
 func _on_Timer_timeout():
 	emit_signal("dash_finished")
-	fsm.context[velocity_key] = speed * direction
+	fsm.context[velocity_key] = velocity
 	fsm.change_to("Walking")
