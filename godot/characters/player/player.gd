@@ -30,6 +30,7 @@ func _set_move_direction(value):
 	$DashParticles.direction = value
 	$GrappleLine.direction = value
 	$Camera.direction = value
+	$Hitbox.direction = value
 
 func hit(damage=69420):
 	$Body.health -= damage
