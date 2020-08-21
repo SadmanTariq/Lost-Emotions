@@ -426,7 +426,7 @@ sprite = NodePath("../../Sprite")
 
 [node name="TeleportIn" type="Node" parent="StateMachine"]
 script = ExtResource( 21 )
-distance = 500
+distance = 300
 sprite = NodePath("../../Sprite")
 
 [node name="OpeningFinder" parent="StateMachine/TeleportIn" instance=ExtResource( 22 )]
@@ -434,7 +434,7 @@ sprite = NodePath("../../Sprite")
 [node name="WallHugging" type="Node" parent="StateMachine"]
 script = ExtResource( 23 )
 slide_speed = 300
-jump_speed_x = 600
+jump_speed_x = 800
 
 [node name="GrappleStarting" type="Node" parent="StateMachine"]
 script = ExtResource( 27 )
