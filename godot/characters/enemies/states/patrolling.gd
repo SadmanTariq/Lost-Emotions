@@ -19,6 +19,9 @@ func physics_process(_delta):
 	var velocity = [-1, 1][direction] * Vector2.RIGHT * speed
 	velocity.y = 10
 	velocity = acting_body.move_and_slide_with_snap(velocity, Vector2.DOWN, Vector2.UP)
+	
+	if acting_body.is_chasable():
+		fsm.change_to("Chasing")
 
 func _check_direction():
 	if direction == Direction.RIGHT and !right_ray.is_colliding():
