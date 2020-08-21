@@ -1,8 +1,14 @@
 extends Line2D
 
+enum {
+	LEFT,
+	RIGHT
+}
+
 var _target: Node2D
 var start_point setget _set_start_point, _get_start_point
 var end_point setget _set_end_point, _get_end_point
+var direction = RIGHT setget _set_direction
 
 func _ready():
 	set_process(false)
@@ -34,6 +40,14 @@ func deactivate():
 #		activate(0.1)
 #	elif event.is_action_pressed("move_left"):
 #		deactivate()
+
+func _set_direction(value):
+	if direction == value:
+		return
+		
+	direction = value
+	position.x = -position.x
+	
 
 func _set_start_point(value):
 	points[0] = value
