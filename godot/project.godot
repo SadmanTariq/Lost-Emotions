@@ -10,6 +10,11 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Node",
+"class": "Body",
+"language": "GDScript",
+"path": "res://characters/body.gd"
+}, {
+"base": "Node",
 "class": "GameState",
 "language": "GDScript",
 "path": "res://scripts/state_machine/game_state.gd"
@@ -25,6 +30,7 @@ _global_script_classes=[ {
 "path": "res://scripts/state_machine/state_machine.gd"
 } ]
 _global_script_class_icons={
+"Body": "",
 "GameState": "",
 "Player": "",
 "StateMachine": ""
