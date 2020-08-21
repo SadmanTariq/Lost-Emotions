@@ -389,18 +389,20 @@ acting_body_path = NodePath("..")
 
 [node name="Walking" type="Node" parent="StateMachine"]
 script = ExtResource( 3 )
-damping = 10
+damping = 12
 
 [node name="Idle" type="Node" parent="StateMachine"]
 script = ExtResource( 4 )
 
 [node name="Jumping" type="Node" parent="StateMachine"]
 script = ExtResource( 5 )
+acceleration = 4000
 gravity = 1500
 jump_speed = 800
 
 [node name="Falling" type="Node" parent="StateMachine"]
 script = ExtResource( 6 )
+acceleration = 4000
 gravity = 3000
 
 [node name="Timer" type="Timer" parent="StateMachine/Falling"]
