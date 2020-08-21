@@ -414,6 +414,7 @@ acting_body_path = NodePath("..")
 [node name="Walking" type="Node" parent="StateMachine"]
 script = ExtResource( 3 )
 damping = 12
+ground_checker = NodePath("../../GroundChecker")
 
 [node name="Idle" type="Node" parent="StateMachine"]
 script = ExtResource( 4 )
@@ -501,12 +502,17 @@ current = true
 smoothing_enabled = true
 script = SubResource( 59 )
 
+[node name="GroundChecker" type="RayCast2D" parent="."]
+position = Vector2( 0, 55.1543 )
+enabled = true
+cast_to = Vector2( 0, 20 )
+collision_mask = 2147483655
+
 [node name="Sprite" type="AnimatedSprite" parent="."]
 material = SubResource( 7 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 58 )
-animation = "grapple_start_right"
-frame = 3
+animation = "idle_right"
 playing = true
 script = ExtResource( 11 )
 [connection signal="touched_ground" from="." to="StateMachine/TeleportOut" method="_on_Player_touched_ground"]
