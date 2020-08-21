@@ -33,3 +33,4 @@ func _set_move_direction(value):
 
 func hit(damage=69420):
 	$Body.health -= damage
+	print("hit")

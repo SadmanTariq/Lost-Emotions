@@ -9,6 +9,10 @@ var acting_body: KinematicBody2D
 onready var right_ray: RayCast2D = get_node(right_ray_path)
 onready var left_ray:  RayCast2D = get_node(left_ray_path)
 
+func input(event):
+	if event.is_action_pressed("grapple"):
+		fsm.change_to("Staggering")
+
 func physics_process(_delta):
 	if !acting_body.is_chasable():
 		fsm.change_to("Patrolling")

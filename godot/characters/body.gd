@@ -4,7 +4,7 @@ extends Node
 signal health_changed(new_health)
 signal died
 
-var health = 1 setget _set_health
+export var health = 1 setget _set_health
 
 func _set_health(value):
 	health = max(value, 0)  # cannot be negative

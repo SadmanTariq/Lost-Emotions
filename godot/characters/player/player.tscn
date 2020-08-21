@@ -418,6 +418,7 @@ script = ExtResource( 31 )
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource( 2 )
+DEBUG = false
 acting_body_path = NodePath("..")
 
 [node name="Walking" type="Node" parent="StateMachine"]
