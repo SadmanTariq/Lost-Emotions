@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://GUI/Fonts/font.tres" type="DynamicFont" id=1]
 [ext_resource path="res://GUI/Buttons/Button.tscn" type="PackedScene" id=2]
+[ext_resource path="res://GUI/Buttons/Quit.tscn" type="PackedScene" id=3]
 
 [sub_resource type="Gradient" id=1]
 offsets = PoolRealArray( 0.00645161 )
@@ -28,20 +29,15 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
-anchor_left = 0.5
-anchor_right = 0.5
+[node name="Project-I" type="Label" parent="."]
+anchor_top = 0.01
+anchor_right = 0.14
 anchor_bottom = 1.0
-margin_left = -255.0
-margin_right = 255.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="HBoxContainer"]
-margin_top = 319.0
-margin_right = 510.0
-margin_bottom = 385.0
+margin_left = 265.968
+margin_top = 54.5558
+margin_right = 596.768
+margin_bottom = 54.5558
+rect_scale = Vector2( 1.5, 1.5 )
 custom_fonts/font = ExtResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "PROJECT-I"
@@ -49,20 +45,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Label"]
-anchor_left = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 12.0
-margin_top = -109.089
-margin_right = 372.0
-margin_bottom = -55.0891
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="Play" parent="." instance=ExtResource( 2 )]
+margin_left = 385.0
+margin_top = 267.708
+margin_right = 895.0
+margin_bottom = 387.708
 
-[node name="NewGame" parent="HBoxContainer/Label/VBoxContainer" instance=ExtResource( 2 )]
-margin_left = 0.0
-margin_top = 0.0
-margin_right = 360.0
-margin_bottom = 120.0
+[node name="Quit" parent="." instance=ExtResource( 3 )]
+margin_left = 385.0
+margin_top = 480.265
+margin_right = 895.0
+margin_bottom = 600.265

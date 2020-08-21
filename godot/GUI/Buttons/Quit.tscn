@@ -10,7 +10,7 @@ bg_color = Color( 0.25098, 0.454902, 0.47451, 1 )
 [sub_resource type="StyleBoxEmpty" id=2]
 
 [node name="NewGame" type="Button"]
-margin_left = -1.0
+margin_left = -1.58667
 margin_top = 0.97348
 margin_right = 904.413
 margin_bottom = 108.973
@@ -34,7 +34,7 @@ custom_colors/font_color = Color( 0.458824, 0.301961, 0.768627, 1 )
 custom_colors/font_color_shadow = Color( 0.176471, 0.137255, 0.219608, 1 )
 custom_constants/shadow_offset_x = 0
 custom_constants/shadow_offset_y = 5
-text = "Play	"
+text = "Quit"
 align = 1
 valign = 1
 __meta__ = {
