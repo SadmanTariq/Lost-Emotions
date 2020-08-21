@@ -1,3 +1,4 @@
+class_name Player
 extends KinematicBody2D
 
 signal touched_ground
@@ -13,6 +14,9 @@ export var move_direction = RIGHT setget _set_move_direction
 
 var _grounded = false
 
+func _ready():
+	Globals.player = self
+
 func _physics_process(_delta):
 	if !_grounded and is_on_floor():
 		emit_signal("touched_ground")
@@ -24,3 +28,4 @@ func _set_move_direction(value):
 	move_direction = value
 	$Sprite.direction = value
 	$DashParticles.direction = value
+	$GrappleLine.direction = value

@@ -13,9 +13,9 @@ func physics_process(delta):
 	var vel = fsm.context[velocity_key]
 	fsm.context[velocity_key] = acting_body.move_and_slide(Vector2(vel.x, 2), Vector2.UP)
 	
-	if speed <= IDLING_THRESHOLD:
-		fsm.context[velocity_key] = Vector2()
-		fsm.change_to("Idle")
-	elif !acting_body.is_on_floor():
+	if !acting_body.is_on_floor():
 		emit_signal("walked_off_ledge")
 		fsm.change_to("Falling")
+	elif speed <= IDLING_THRESHOLD:
+		fsm.context[velocity_key] = Vector2()
+		fsm.change_to("Idle")

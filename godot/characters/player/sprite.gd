@@ -8,8 +8,13 @@ enum {
 const animations = {
 	"idle": {LEFT: "idle_left", RIGHT: "idle_right"},
 	"walk": {LEFT: "walk_left", RIGHT: "walk_right"},
+	"jump": {LEFT: "jump_left", RIGHT: "jump_right"},
+	"fall": {LEFT: "fall_left", RIGHT: "fall_right"},
 	"dash": {LEFT: "dash_left", RIGHT: "dash_right"},
-	"dash_start": {LEFT: "dash_start_left", RIGHT: "dash_start_right"}
+	"dash_start": {LEFT: "dash_start_left", RIGHT: "dash_start_right"},
+	"wall_hug": {LEFT: "wall_hug_left", RIGHT: "wall_hug_right"},
+	"teleport": {LEFT: "teleport_left", RIGHT: "teleport_right"},
+	"grapple_start": {LEFT: "grapple_start_left", RIGHT: "grapple_start_right"},
 }
 
 var action = "idle" setget _set_action
@@ -44,3 +49,23 @@ func _on_Dashing_state_entered():
 
 func _on_DashStarting_state_entered():
 	_set_action("dash_start")
+
+
+func _on_Jumping_state_entered():
+	_set_action("jump")
+
+
+func _on_Falling_state_entered():
+	_set_action("fall")
+
+
+func _on_TeleportOut_state_entered():
+	_set_action("teleport")
+
+
+func _on_WallHugging_state_entered():
+	_set_action("wall_hug")
+
+
+func _on_GrappleStarting_state_entered():
+	_set_action("grapple_start")

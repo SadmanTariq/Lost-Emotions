@@ -16,6 +16,10 @@ func input(event: InputEvent):
 		fsm.change_to("Jumping")
 	if event.is_action_pressed("dash"):
 		fsm.change_to("DashStarting")
+	if event.is_action_pressed("teleport"):
+		fsm.change_to("TeleportOut")
+	if event.is_action_pressed("grapple"):
+		fsm.change_to("GrappleStarting")
 
 func physics_process(delta):
 	var vel: Vector2 = fsm.context[velocity_key]
@@ -40,4 +44,7 @@ func physics_process(delta):
 	vel = acting_body.move_and_slide(vel, Vector2.UP)
 
 	fsm.context[velocity_key] = vel
+	
+	if acting_body.is_on_wall():
+		fsm.change_to("WallHugging")
 

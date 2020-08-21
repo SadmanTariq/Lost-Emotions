@@ -5,6 +5,10 @@ func input(event: InputEvent):
 		fsm.change_to("Jumping")
 	if event.is_action_pressed("dash"):
 		fsm.change_to("DashStarting")
+	if event.is_action_pressed("teleport"):
+		fsm.change_to("TeleportOut")
+	if event.is_action_pressed("grapple"):
+		fsm.change_to("GrappleStarting")
 
 func physics_process(_delta):
 	var x = 0
