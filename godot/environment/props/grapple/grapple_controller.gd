@@ -18,8 +18,8 @@ func _physics_process(_delta):
 			anchor.remove_from_group("active_anchor")
 			
 		var result = space_state.intersect_ray(player.global_position,
-									  anchor.global_position, [player],
-									  0b100)  # mask 3
+											   anchor.global_position, [player],
+											   0b100)  # mask 3
 		if !result:
 			var dist = player.global_position.distance_to(anchor.global_position)
 			if dist < nearest_dist:
