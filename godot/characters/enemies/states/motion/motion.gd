@@ -17,6 +17,9 @@ onready var right_ray: RayCast2D = get_node(right_ray_path)
 onready var left_ray:  RayCast2D = get_node(left_ray_path)
 
 func physics_process(_delta):
+	if !right_ray.is_colliding() and !left_ray.is_colliding():
+		fsm.change_to("Falling")
+		
 	if direction == Direction.NONE:
 		return
 	if direction == Direction.RIGHT and !right_ray.is_colliding():
