@@ -8,6 +8,7 @@
 [node name="World" type="Node2D" parent="."]
 
 [node name="Player" parent="World" instance=ExtResource( 1 )]
+position = Vector2( 339.411, -3160.53 )
 
 [node name="Level" parent="World" instance=ExtResource( 2 )]
 
