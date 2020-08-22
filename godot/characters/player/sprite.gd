@@ -15,6 +15,8 @@ const animations = {
 	"wall_hug": {LEFT: "wall_hug_left", RIGHT: "wall_hug_right"},
 	"teleport": {LEFT: "teleport_left", RIGHT: "teleport_right"},
 	"grapple_start": {LEFT: "grapple_start_left", RIGHT: "grapple_start_right"},
+	"attack1": {LEFT: "attack1_left", RIGHT: "attack1_right"},
+	"attack2": {LEFT: "attack2_left", RIGHT: "attack2_right"},
 }
 
 var action = "idle" setget _set_action
@@ -69,3 +71,11 @@ func _on_WallHugging_state_entered():
 
 func _on_GrappleStarting_state_entered():
 	_set_action("grapple_start")
+
+
+func _on_Attacking_state_entered():
+	_set_action("attack1")
+
+
+func _on_Attacking_combo_started():
+	_set_action("attack2")
