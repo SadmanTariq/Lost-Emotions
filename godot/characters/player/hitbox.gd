@@ -21,3 +21,7 @@ func _set_direction(value):
 		new_point.x = -new_point.x
 		$CollisionPolygon2D.polygon[i] = new_point
 #	$CollisionPolygon2D.polygon = new_polygon
+
+
+func _on_Attacking_state_entered():
+	$CollisionPolygon2D.disabled = false
