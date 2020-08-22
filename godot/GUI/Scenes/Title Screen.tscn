@@ -1,9 +1,12 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://GUI/Fonts/font.tres" type="DynamicFont" id=1]
 [ext_resource path="res://GUI/Buttons/Button.tscn" type="PackedScene" id=2]
 [ext_resource path="res://GUI/Buttons/Quit.tscn" type="PackedScene" id=3]
 [ext_resource path="res://gui/images/Tile_Variation2.png" type="Texture" id=4]
+[ext_resource path="res://GUI/Buttons/Play.gd" type="Script" id=5]
+[ext_resource path="res://gui/scene_changer/SceneChanger.tscn" type="PackedScene" id=6]
+[ext_resource path="res://GUI/Buttons/Quit.gd" type="Script" id=7]
 
 [sub_resource type="Gradient" id=1]
 offsets = PoolRealArray( 0.00645161 )
@@ -115,6 +118,9 @@ margin_top = 256.0
 margin_right = 895.0
 margin_bottom = 376.0
 rect_scale = Vector2( 0.999967, 1.06213 )
+script = ExtResource( 5 )
+
+[node name="SceneChanger" parent="Play" instance=ExtResource( 6 )]
 
 [node name="Quit" parent="." instance=ExtResource( 3 )]
 margin_left = 384.0
@@ -122,3 +128,6 @@ margin_top = 448.0
 margin_right = 894.0
 margin_bottom = 568.0
 rect_scale = Vector2( 1.00404, 1.06579 )
+script = ExtResource( 7 )
+[connection signal="pressed" from="Play" to="Play" method="_on_Play_pressed"]
+[connection signal="pressed" from="Quit" to="Quit" method="_on_Quit_pressed"]

@@ -30,3 +30,7 @@ func _set_move_direction(value):
 	$DashParticles.direction = value
 	$GrappleLine.direction = value
 	$Camera.direction = value
+
+
+
+
