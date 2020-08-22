@@ -39,7 +39,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Project-I"
-run/main_scene="res://GUI/Scenes/Title Screen.tscn"
+run/main_scene="res://main_scenes/main.tscn"
 config/icon="res://icon.png"
 
 [autoload]
@@ -105,4 +105,5 @@ attack={
 
 [rendering]
 
+quality/2d/use_pixel_snap=true
 environment/default_environment="res://default_env.tres"
