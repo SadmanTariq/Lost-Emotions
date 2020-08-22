@@ -30,3 +30,6 @@ func physics_process(_delta):
 	var vel = [-1, 1][direction] * Vector2.RIGHT * speed
 	
 	vel = acting_body.move_and_slide_with_snap(vel, Vector2.DOWN, Vector2.UP)
+	
+	if direction != Direction.NONE:
+		acting_body.direction = direction
