@@ -17,6 +17,7 @@ const animations = {
 	"grapple_start": {LEFT: "grapple_start_left", RIGHT: "grapple_start_right"},
 	"attack1": {LEFT: "attack1_left", RIGHT: "attack1_right"},
 	"attack2": {LEFT: "attack2_left", RIGHT: "attack2_right"},
+	"death": {LEFT: "death_left", RIGHT: "death_right"},
 }
 
 var action = "idle" setget _set_action
@@ -79,3 +80,11 @@ func _on_Attacking_state_entered():
 
 func _on_Attacking_combo_started():
 	_set_action("attack2")
+
+
+func _on_Dying_state_entered():
+	_set_action("death")
+
+
+func _on_Respawning_state_entered():
+	play("death", true)

@@ -55,3 +55,7 @@ func _on_Attacking_combo_started():
 
 func _on_Attacking_finished():
 	_in_combo = false
+
+
+func _on_Body_died():
+	$StateMachine.change_to("Dying")

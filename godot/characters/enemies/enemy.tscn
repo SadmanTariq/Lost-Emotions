@@ -30,6 +30,7 @@ health = 3
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource( 2 )
+DEBUG = false
 acting_body_path = NodePath("..")
 
 [node name="Patrolling" type="Node" parent="StateMachine"]
