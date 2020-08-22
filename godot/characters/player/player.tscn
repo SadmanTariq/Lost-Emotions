@@ -614,7 +614,6 @@ material = SubResource( 8 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 73 )
 animation = "idle_right"
-frame = 2
 playing = true
 script = ExtResource( 11 )
 
@@ -646,7 +645,9 @@ disabled = true
 [connection signal="timeout" from="StateMachine/GrappleStarting/Timer" to="StateMachine/GrappleStarting" method="_on_Timer_timeout"]
 [connection signal="finished" from="StateMachine/Grappling" to="GrappleLine" method="deactivate"]
 [connection signal="state_entered" from="StateMachine/Grappling" to="GrappleLine" method="_on_Grappling_state_entered"]
+[connection signal="combo_started" from="StateMachine/Attacking" to="." method="_on_Attacking_combo_started"]
 [connection signal="combo_started" from="StateMachine/Attacking" to="Sprite" method="_on_Attacking_combo_started"]
+[connection signal="finished" from="StateMachine/Attacking" to="." method="_on_Attacking_finished"]
 [connection signal="finished" from="StateMachine/Attacking" to="Hitbox" method="_on_Attacking_finished"]
 [connection signal="state_entered" from="StateMachine/Attacking" to="Hitbox" method="_on_Attacking_state_entered"]
 [connection signal="state_entered" from="StateMachine/Attacking" to="Sprite" method="_on_Attacking_state_entered"]

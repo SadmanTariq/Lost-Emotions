@@ -53,11 +53,13 @@ left_ray_path = NodePath("../../RayLeft")
 
 [node name="Chasing" type="Node" parent="StateMachine"]
 script = ExtResource( 6 )
+speed = 400
 right_ray_path = NodePath("../../RayRight")
 left_ray_path = NodePath("../../RayLeft")
 
 [node name="Staggering" type="Node" parent="StateMachine"]
 script = ExtResource( 8 )
+SPEED = 1000
 
 [node name="Falling" type="Node" parent="StateMachine"]
 script = ExtResource( 9 )

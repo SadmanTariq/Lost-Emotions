@@ -39,10 +39,19 @@ func _set_move_direction(value):
 
 func hit(dmg=69420):
 	$Body.health -= dmg
-	print("hit")
 
 
 func _on_Hitbox_body_entered(body):
 	if body.has_method("hit"):
 		print("hit")
+		if _in_combo:
+			print("combo")
 		body.hit(combo_damage if _in_combo else damage)
+
+
+func _on_Attacking_combo_started():
+	_in_combo = true
+
+
+func _on_Attacking_finished():
+	_in_combo = false

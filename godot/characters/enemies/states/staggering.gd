@@ -8,8 +8,10 @@ var acting_body: KinematicBody2D
 var velocity: Vector2
 
 func enter():
-	velocity = Vector2.RIGHT * SPEED
-	
+	velocity = acting_body.global_position - Globals.player.global_position
+	velocity.y = 0
+	velocity = velocity.normalized()
+	velocity *= SPEED
 
 func physics_process(delta):
 	velocity = acting_body.move_and_slide(velocity)
