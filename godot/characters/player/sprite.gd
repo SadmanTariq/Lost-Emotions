@@ -75,3 +75,7 @@ func _on_GrappleStarting_state_entered():
 
 func _on_Attacking_state_entered():
 	_set_action("attack1")
+
+
+func _on_Attacking_combo_started():
+	_set_action("attack2")

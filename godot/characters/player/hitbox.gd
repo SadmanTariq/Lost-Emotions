@@ -25,3 +25,7 @@ func _set_direction(value):
 
 func _on_Attacking_state_entered():
 	$CollisionPolygon2D.disabled = false
+
+
+func _on_Attacking_finished():
+	$CollisionPolygon2D.disabled = true
