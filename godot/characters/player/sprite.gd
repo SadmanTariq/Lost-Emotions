@@ -87,4 +87,4 @@ func _on_Dying_state_entered():
 
 
 func _on_Respawning_state_entered():
-	play("death", true)
+	play("death_right", true)

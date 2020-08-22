@@ -18,4 +18,4 @@ func enter():
 
 
 func _on_Timer_timeout():
-	fsm.change_to("Walking")
+	fsm.change_to("Idle")
