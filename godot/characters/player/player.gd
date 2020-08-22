@@ -15,6 +15,8 @@ export var move_direction = RIGHT setget _set_move_direction
 export var damage = 1
 export var combo_damage = 5
 
+var _in_combo = false
+
 var _grounded = false
 
 func _ready():
@@ -38,3 +40,9 @@ func _set_move_direction(value):
 func hit(dmg=69420):
 	$Body.health -= dmg
 	print("hit")
+
+
+func _on_Hitbox_body_entered(body):
+	if body.has_method("hit"):
+		print("hit")
+		body.hit(combo_damage if _in_combo else damage)

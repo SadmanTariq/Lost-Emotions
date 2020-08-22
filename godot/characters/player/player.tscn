@@ -567,6 +567,7 @@ start_speed = 1200
 
 [node name="Attacking" type="Node" parent="StateMachine"]
 script = ExtResource( 34 )
+combo_opening = 0.1
 
 [node name="AnimationTimer" type="Timer" parent="StateMachine/Attacking"]
 one_shot = true
@@ -613,7 +614,7 @@ material = SubResource( 8 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 73 )
 animation = "idle_right"
-frame = 1
+frame = 2
 playing = true
 script = ExtResource( 11 )
 
@@ -650,3 +651,4 @@ disabled = true
 [connection signal="state_entered" from="StateMachine/Attacking" to="Hitbox" method="_on_Attacking_state_entered"]
 [connection signal="state_entered" from="StateMachine/Attacking" to="Sprite" method="_on_Attacking_state_entered"]
 [connection signal="timeout" from="StateMachine/Attacking/AnimationTimer" to="StateMachine/Attacking" method="_on_AnimationTimer_timeout"]
+[connection signal="body_entered" from="Hitbox" to="." method="_on_Hitbox_body_entered"]

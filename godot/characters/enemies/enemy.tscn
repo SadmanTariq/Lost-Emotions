@@ -90,4 +90,5 @@ collision_layer = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2( 0, -5.46583 )
 shape = SubResource( 4 )
+[connection signal="knocked_back" from="." to="." method="_on_Enemy_knocked_back"]
 [connection signal="body_entered" from="Hitbox" to="." method="_on_Hitbox_body_entered"]
