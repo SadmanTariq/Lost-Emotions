@@ -86,7 +86,7 @@ radius = 168.094
 script = ExtResource( 4 )
 
 [node name="DolphinSprite" type="AnimatedSprite" parent="."]
-position = Vector2( 0, -16.6283 )
+position = Vector2( 0, -1.58528 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 5 )
 frame = 2
@@ -105,7 +105,7 @@ texture = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="DolphinSprite"]
 position = Vector2( 0, -22.2026 )
-rotation = 2.74773
+rotation = 1.67048
 texture = ExtResource( 3 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

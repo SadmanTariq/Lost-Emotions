@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://environment/level/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://environment/props/deathzone.tscn" type="PackedScene" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://environment/props/binoculars/binoculars.tscn" type="PackedScene" id=12]
 [ext_resource path="res://environment/props/dolphin/dolphin.tscn" type="PackedScene" id=13]
 [ext_resource path="res://environment/level/background_blurred.png" type="Texture" id=14]
+[ext_resource path="res://environment/props/proximity_text.tscn" type="PackedScene" id=15]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 31.6251, 16.7703 )
@@ -4218,3 +4219,29 @@ motion_mirroring = Vector2( 1380, 804 )
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
 scale = Vector2( 2, 2 )
 texture = ExtResource( 14 )
+
+[node name="Tutorials" type="Node2D" parent="."]
+
+[node name="ProximityText" parent="Tutorials" instance=ExtResource( 15 )]
+position = Vector2( 825.582, -4965.29 )
+text = "AD to move
+space to jump"
+
+[node name="ProximityText2" parent="Tutorials" instance=ExtResource( 15 )]
+position = Vector2( 1054.32, 428.635 )
+text = "H to attack
+"
+
+[node name="ProximityText3" parent="Tutorials" instance=ExtResource( 15 )]
+position = Vector2( 2197.25, 263.545 )
+text = "Attack again right before
+first attack ends to combo"
+
+[node name="ProximityText4" parent="Tutorials" instance=ExtResource( 15 )]
+position = Vector2( 365.206, 427.608 )
+text = "Some areas need special
+abilities to access"
+
+[node name="ProximityText5" parent="Tutorials" instance=ExtResource( 15 )]
+position = Vector2( -2642.46, 420.544 )
+text = "dashing replenishes jumps"
