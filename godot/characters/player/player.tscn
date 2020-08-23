@@ -700,6 +700,7 @@ material = SubResource( 9 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 86 )
 animation = "idle_right"
+frame = 2
 playing = true
 script = ExtResource( 11 )
 
@@ -709,7 +710,7 @@ collision_mask = 2
 script = ExtResource( 35 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hitbox"]
-polygon = PoolVector2Array( 18.4508, -29.329, 49.3162, -30.7001, 77.9217, -11.6298, 78.4514, 27.5703, 49.3162, 45.0515, 19.0822, 45.3177 )
+polygon = PoolVector2Array( 18.4508, -29.329, 99.8101, -64.028, 117.648, -6.94604, 117.648, 38.2438, 98.6209, 87.0013, 19.0822, 45.3177 )
 disabled = true
 [connection signal="touched_ground" from="." to="StateMachine/TeleportOut" method="_on_Player_touched_ground"]
 [connection signal="touched_ground" from="." to="StateMachine/Dashing" method="_on_Player_touched_ground"]

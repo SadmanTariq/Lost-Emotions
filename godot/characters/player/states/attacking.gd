@@ -26,6 +26,8 @@ func enter():
 
 func physics_process(delta):
 	var vel = fsm.context["velocity"]
+	if abs(vel.y) <= 10:
+		vel = Vector2()
 	var accel = -vel.normalized() * velocity_resistance
 	accel.y += gravity
 	
