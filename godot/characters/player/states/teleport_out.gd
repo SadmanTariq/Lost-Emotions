@@ -9,6 +9,9 @@ var factor = 0
 
 
 func enter():
+	if !acting_body.grapple_unlocked:
+		fsm.back()
+		return
 	if !available and !acting_body.is_on_floor():
 		fsm.back()
 		return

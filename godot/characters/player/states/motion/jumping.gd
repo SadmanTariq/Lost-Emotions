@@ -4,11 +4,13 @@ export var jump_speed = 200
 
 func enter():
 	.enter()
-	if fsm.context["jumps_left"] <= 0:
+	
+	var free_jump = acting_body.is_on_floor() or (acting_body.is_on_wall() and acting_body.walljump_unlocked)
+	if fsm.context["jumps_left"] <= 0 and !free_jump:
 		fsm.back()
 		return
 	
-	if !acting_body.is_on_floor():
+	if !free_jump:
 		fsm.context["jumps_left"] -= 1
 	fsm.context[velocity_key].y = -jump_speed
 

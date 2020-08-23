@@ -8,8 +8,20 @@ enum {
 	RIGHT
 }
 
-export var num_jumps = 1
+# FOR MASRUR
+# Use these values for indicators
+var double_jump_available setget ,_is_double_jump_available
+var dash_available        setget ,_is_dash_available
+var teleport_available    setget ,_is_teleport_available
+
+# Do NOT use these for indicators
+export var num_jumps = 0
 export var dash_unlocked = false
+export var teleport_unlocked = false
+export var walljump_unlocked = false
+export var grapple_unlocked = false
+var double_jump_unlocked setget _set_double_jump_unlocked
+
 export var move_direction = RIGHT setget _set_move_direction
 
 export var damage = 1
@@ -39,6 +51,21 @@ func _set_move_direction(value):
 
 func hit(dmg=69420):
 	$Body.health -= dmg
+
+func _is_double_jump_available():
+	return $StateMachine.context.has("jumps_left") and $StateMachine.context["jumps_left"] > 0
+
+func _is_dash_available():
+	return dash_unlocked and $StateMachine/Dashing.dash_available
+
+func _is_teleport_available():
+	return teleport_unlocked and $StateMachine/TeleportOut.available
+
+func _set_double_jump_unlocked(value: bool):
+	if value:
+		num_jumps = 1
+	else:
+		num_jumps = 0
 
 
 func _on_Hitbox_body_entered(body):
