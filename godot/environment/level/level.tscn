@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://environment/level/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://environment/props/deathzone.tscn" type="PackedScene" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://environment/props/collectibles/wall_jump_collectible.tscn" type="PackedScene" id=11]
 [ext_resource path="res://environment/props/binoculars/binoculars.tscn" type="PackedScene" id=12]
 [ext_resource path="res://environment/props/dolphin/dolphin.tscn" type="PackedScene" id=13]
+[ext_resource path="res://environment/level/background_blurred.png" type="Texture" id=14]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 31.6251, 16.7703 )
@@ -4169,6 +4170,12 @@ position = Vector2( 2912, 320 )
 [node name="Target" type="Node2D" parent="Binocular/Binoculars2"]
 position = Vector2( 152, 600 )
 
+[node name="Binoculars10" parent="Binocular" instance=ExtResource( 12 )]
+position = Vector2( 1060.87, -4930.84 )
+
+[node name="Target" type="Node2D" parent="Binocular/Binoculars10"]
+position = Vector2( -155.42, -508.73 )
+
 [node name="Binoculars" parent="Binocular" instance=ExtResource( 12 )]
 position = Vector2( 96, 448 )
 
@@ -4201,3 +4208,12 @@ position = Vector2( -856, -24 )
 
 [node name="Dolphin" parent="." instance=ExtResource( 13 )]
 position = Vector2( 783.707, -5468.73 )
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.01, 0 )
+motion_mirroring = Vector2( 1380, 804 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+texture = ExtResource( 14 )
