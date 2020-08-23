@@ -700,7 +700,7 @@ material = SubResource( 9 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 86 )
 animation = "idle_right"
-frame = 2
+frame = 1
 playing = true
 script = ExtResource( 11 )
 

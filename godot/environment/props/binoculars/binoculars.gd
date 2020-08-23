@@ -3,8 +3,13 @@ extends Area2D
 export var panning_speed = 3
 
 var active = false
-var camera_def_pos: Vector2
 var camera_def_speed: float
+
+func _process(_delta):
+	if Globals.camera == null:
+		return
+	camera_def_speed = Globals.camera.smoothing_speed
+	set_process(false)
 
 func _input(event):
 	if !active:
@@ -15,14 +20,13 @@ func _input(event):
 		stop()
 
 func start():
-	camera_def_pos = Globals.camera.position
 	camera_def_speed = Globals.camera.smoothing_speed
 	if has_node("Target"):
 		Globals.camera.global_position = get_node("Target").global_position
 		Globals.camera.smoothing_speed = panning_speed
 	
 func stop():
-	Globals.camera.position = camera_def_pos
+	Globals.camera.position = Vector2()
 	Globals.camera.smoothing_speed = camera_def_speed
 
 func _show_tooltip():
