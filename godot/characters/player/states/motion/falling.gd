@@ -9,12 +9,13 @@ func enter():
 	coyote = false
 
 func input(event: InputEvent):
-	.input(event)
 	if event.is_action_pressed("jump") and !$Timer.is_stopped():
 		print("coyote")
 		coyote = true
 #		fsm.context["jumps_left"] += 1
 		fsm.change_to("Jumping")
+	else:
+		.input(event)
 
 func physics_process(delta):
 	.physics_process(delta)
