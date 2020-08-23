@@ -9,6 +9,7 @@ export(String, MULTILINE) var text
 
 func _ready():
 	$Label.modulate = Color(0)
+	$Label.text = text
 
 func _on_ProximityText_body_entered(body):
 	if body == Globals.player:
@@ -22,8 +23,8 @@ func _on_ProximityText_body_exited(body):
 [sub_resource type="CircleShape2D" id=2]
 radius = 100.0
 
-[sub_resource type="DynamicFont" id=3]
-size = 20
+[sub_resource type="DynamicFont" id=5]
+size = 30
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 1 )
 
@@ -43,8 +44,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="Animation" id=5]
-resource_name = "show"
+[sub_resource type="Animation" id=6]
 length = 0.2
 tracks/0/type = "value"
 tracks/0/path = NodePath("Label:modulate")
@@ -69,7 +69,7 @@ shape = SubResource( 2 )
 [node name="Label" type="Label" parent="."]
 grow_horizontal = 2
 grow_vertical = 2
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 5 )
 align = 1
 valign = 1
 __meta__ = {
@@ -78,6 +78,6 @@ __meta__ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/hide = SubResource( 4 )
-anims/show = SubResource( 5 )
+anims/show = SubResource( 6 )
 [connection signal="body_entered" from="." to="." method="_on_ProximityText_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_ProximityText_body_exited"]
