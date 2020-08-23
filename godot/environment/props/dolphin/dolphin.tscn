@@ -1,0 +1,118 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://environment/props/dolphin/cyphin.png" type="Texture" id=1]
+[ext_resource path="res://environment/props/dolphin/particle.png" type="Texture" id=2]
+[ext_resource path="res://environment/props/dolphin/core.png" type="Texture" id=3]
+[ext_resource path="res://environment/props/dolphin/dolphin.gd" type="Script" id=4]
+[ext_resource path="res://GUI/scene_changer/SceneChanger.tscn" type="PackedScene" id=5]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 64, 32 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 1 )
+region = Rect2( 64, 0, 64, 32 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 1 )
+region = Rect2( 128, 0, 64, 32 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 1 )
+region = Rect2( 192, 0, 64, 32 )
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ) ],
+"loop": true,
+"name": "default",
+"speed": 6.0
+} ]
+
+[sub_resource type="Gradient" id=6]
+colors = PoolColorArray( 0, 0.554688, 1, 1, 0.574219, 0.920166, 1, 1 )
+
+[sub_resource type="GradientTexture" id=7]
+gradient = SubResource( 6 )
+
+[sub_resource type="ParticlesMaterial" id=8]
+lifetime_randomness = 0.38
+flag_disable_z = true
+direction = Vector3( 0, 1, 0 )
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 126.98
+initial_velocity_random = 0.24
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = 34.92
+damping = 42.86
+damping_random = 0.14
+color_ramp = SubResource( 7 )
+
+[sub_resource type="Animation" id=9]
+resource_name = "default"
+length = 4.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("DolphinSprite:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 20 ), Vector2( 0, -20 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("DolphinSprite/Sprite:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 360.0 ]
+}
+
+[sub_resource type="CircleShape2D" id=10]
+radius = 168.094
+
+[node name="Dolphin" type="Area2D"]
+script = ExtResource( 4 )
+
+[node name="DolphinSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 0, 19.3395 )
+scale = Vector2( 2, 2 )
+frames = SubResource( 5 )
+frame = 1
+playing = true
+flip_h = true
+
+[node name="Particles2D" type="Particles2D" parent="DolphinSprite"]
+position = Vector2( 6, 4.25 )
+z_index = -1
+amount = 50
+lifetime = 0.5
+visibility_rect = Rect2( -37.232, -11.5737, 71.3488, 76.7141 )
+local_coords = false
+process_material = SubResource( 8 )
+texture = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="DolphinSprite"]
+position = Vector2( 0, -22.2026 )
+rotation = 0.0952607
+texture = ExtResource( 3 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/default = SubResource( 9 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 10 )
+
+[node name="SceneChanger" parent="." instance=ExtResource( 5 )]
+[connection signal="body_entered" from="." to="." method="_on_Dolphin_body_entered"]

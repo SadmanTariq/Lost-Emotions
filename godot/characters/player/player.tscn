@@ -448,7 +448,7 @@ animations = [ {
 }, {
 "frames": [ SubResource( 13 ) ],
 "loop": true,
-"name": "fall_right",
+"name": "teleport_right",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ) ],
@@ -493,8 +493,8 @@ animations = [ {
 }, {
 "frames": [ SubResource( 43 ) ],
 "loop": true,
-"name": "teleport_right",
-"speed": 5.0
+"name": "dash_right",
+"speed": 12.0
 }, {
 "frames": [ SubResource( 44 ), SubResource( 45 ), SubResource( 46 ), SubResource( 47 ), SubResource( 48 ), SubResource( 49 ), SubResource( 50 ), SubResource( 51 ) ],
 "loop": true,
