@@ -8,8 +8,8 @@
 [node name="End Screen" type="Node2D"]
 
 [node name="background" type="TextureRect" parent="."]
-margin_right = 1323.0
-margin_bottom = 750.0
+margin_right = 1920.0
+margin_bottom = 1024.0
 texture = SubResource( 1 )
 expand = true
 __meta__ = {
@@ -17,10 +17,10 @@ __meta__ = {
 }
 
 [node name="you win" type="TextureRect" parent="."]
-margin_left = 17.8961
-margin_top = 5.73822
-margin_right = 1937.9
-margin_bottom = 1085.74
+margin_left = 312.746
+margin_top = 121.226
+margin_right = 2232.75
+margin_bottom = 1201.23
 rect_scale = Vector2( 0.647407, 0.647407 )
 texture = ExtResource( 1 )
 __meta__ = {
@@ -29,6 +29,7 @@ __meta__ = {
 
 [node name="core emitter" type="CPUParticles2D" parent="."]
 position = Vector2( 249.033, 4.26161 )
+scale = Vector2( 2, 2 )
 amount = 27
 lifetime = 4.0
 randomness = 0.25
