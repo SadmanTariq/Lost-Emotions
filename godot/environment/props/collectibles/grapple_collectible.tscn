@@ -52,9 +52,11 @@ animations = [ {
 "speed": 15.0
 } ]
 
-[node name="Collectible" instance=ExtResource( 2 )]
+[node name="GrappleCollectible" instance=ExtResource( 2 )]
+
+[node name="Action" parent="." index="1"]
+property = "grapple_unlocked"
 
 [node name="Sprite" type="AnimatedSprite" parent="." index="2"]
-scale = Vector2( 2, 2 )
 frames = SubResource( 10 )
 playing = true

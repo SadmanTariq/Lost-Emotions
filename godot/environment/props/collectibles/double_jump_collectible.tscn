@@ -52,10 +52,12 @@ animations = [ {
 "speed": 15.0
 } ]
 
-[node name="Collectible" instance=ExtResource( 2 )]
+[node name="DoubleJumpCollectible" instance=ExtResource( 2 )]
+
+[node name="Action" parent="." index="1"]
+property = "double_jump_unlocked"
 
 [node name="Sprite" type="AnimatedSprite" parent="." index="2"]
-scale = Vector2( 2, 2 )
 frames = SubResource( 21 )
-frame = 1
+frame = 2
 playing = true

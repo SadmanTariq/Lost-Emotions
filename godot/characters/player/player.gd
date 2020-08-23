@@ -70,7 +70,6 @@ func _set_double_jump_unlocked(value: bool):
 
 func _on_Hitbox_body_entered(body):
 	if body.has_method("hit"):
-		print("hit")
 		if _in_combo:
 			print("combo")
 		body.hit(combo_damage if _in_combo else damage)
