@@ -1,7 +1,7 @@
 extends Area2D
 
-export(PackedScene) var end_screen
+export var end_screen = "res://GUI/Scenes/End Screen.tscn"
 
 func _on_Dolphin_body_entered(body):
 	if body == Globals.player:
-		get_tree().change_scene_to(end_screen)
+		$SceneChanger.change_scene(end_screen)

@@ -1,9 +1,10 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://environment/props/dolphin/cyphin.png" type="Texture" id=1]
 [ext_resource path="res://environment/props/dolphin/particle.png" type="Texture" id=2]
 [ext_resource path="res://environment/props/dolphin/core.png" type="Texture" id=3]
 [ext_resource path="res://environment/props/dolphin/dolphin.gd" type="Script" id=4]
+[ext_resource path="res://GUI/scene_changer/SceneChanger.tscn" type="PackedScene" id=5]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 1 )
@@ -85,10 +86,10 @@ radius = 168.094
 script = ExtResource( 4 )
 
 [node name="DolphinSprite" type="AnimatedSprite" parent="."]
-position = Vector2( 0, 18.1371 )
+position = Vector2( 0, 19.3395 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 5 )
-frame = 2
+frame = 1
 playing = true
 flip_h = true
 
@@ -97,13 +98,14 @@ position = Vector2( 6, 4.25 )
 z_index = -1
 amount = 50
 lifetime = 0.5
+visibility_rect = Rect2( -37.232, -11.5737, 71.3488, 76.7141 )
 local_coords = false
 process_material = SubResource( 8 )
 texture = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="DolphinSprite"]
 position = Vector2( 0, -22.2026 )
-rotation = 0.240297
+rotation = 0.0952607
 texture = ExtResource( 3 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -111,4 +113,6 @@ anims/default = SubResource( 9 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 10 )
+
+[node name="SceneChanger" parent="." instance=ExtResource( 5 )]
 [connection signal="body_entered" from="." to="." method="_on_Dolphin_body_entered"]
