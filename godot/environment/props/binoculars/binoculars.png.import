@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Tile_Variation2.png-50e4234ad9cd452322de03323c874280.stex"
+path="res://.import/binoculars.png-92d51c5d3ac9aedf0f5e527bdbef99f9.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://GUI/images/Tile_Variation2.png"
-dest_files=[ "res://.import/Tile_Variation2.png-50e4234ad9cd452322de03323c874280.stex" ]
+source_file="res://environment/props/binoculars/binoculars.png"
+dest_files=[ "res://.import/binoculars.png-92d51c5d3ac9aedf0f5e527bdbef99f9.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

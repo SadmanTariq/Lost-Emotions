@@ -10,19 +10,24 @@ export var velocity_resistance = 6
 export var gravity = 1500
 
 var acting_body: Player
+var in_combo = false
 
 
 func input(event: InputEvent):
-	if event.is_action_pressed("attack") and $ComboTimer.is_stopped():
+	if event.is_action_pressed("attack") and $ComboTimer.is_stopped() and !in_combo:
 		emit_signal("combo_started")
+		in_combo = true
 		$AnimationTimer.start(combo_duration)
 
 func enter():
 	$AnimationTimer.start(duration)
 	$ComboTimer.start(duration - combo_opening)
+	in_combo = false
 
 func physics_process(delta):
 	var vel = fsm.context["velocity"]
+	if abs(vel.y) <= 10:
+		vel = Vector2()
 	var accel = -vel.normalized() * velocity_resistance
 	accel.y += gravity
 	

@@ -7,7 +7,7 @@ export var speed = 2000
 
 var dash_available = true
 var direction: Vector2
-var acting_body: KinematicBody2D
+var acting_body: Player
 var velocity: Vector2
 var velocity_key = "velocity"
 
@@ -31,6 +31,8 @@ func enter():
 
 func physics_process(_delta):
 	velocity = acting_body.move_and_slide(velocity)
+#	if acting_body.is_on_floor():
+	fsm.context["jumps_left"] = 2
 
 func get_direction():
 	if Input.is_action_pressed("move_left"):

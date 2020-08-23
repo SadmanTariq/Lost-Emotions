@@ -87,6 +87,7 @@ animations = [ {
 } ]
 
 [node name="Enemy" instance=ExtResource( 3 )]
+chase_range = 0
 
 [node name="Body" parent="." index="0"]
 health = 5

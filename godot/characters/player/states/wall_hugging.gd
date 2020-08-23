@@ -6,13 +6,16 @@ export var jump_speed_x = 300
 var acting_body: Player
 
 func enter():
+	if !acting_body.walljump_unlocked:
+		fsm.back()
+		return
 	fsm.context["velocity"] = Vector2()
 #	fsm.context["jumps_left"] = max(1, fsm.context["jumps_left"])
 
 func input(event: InputEvent):
 	if event.is_action_pressed("jump"):
 		fsm.context["velocity"].x = [jump_speed_x, -jump_speed_x][acting_body.move_direction]
-		fsm.context["jumps_left"] += 1
+#		fsm.context["jumps_left"] += 1
 		fsm.change_to("Jumping")
 	elif event.is_action_pressed(["move_right", "move_left"][acting_body.move_direction]):
 		fsm.change_to("Falling")

@@ -87,6 +87,7 @@ animations = [ {
 } ]
 
 [node name="Enemy" instance=ExtResource( 1 )]
+chase_range = 0
 
 [node name="Sprite" type="AnimatedSprite" parent="." index="7"]
 scale = Vector2( 2, 2 )

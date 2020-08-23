@@ -5,7 +5,7 @@ export var damping = 6
 export var velocity_key = "velocity"
 #export var gravity = 2500
 
-var acting_body: KinematicBody2D
+var acting_body: Player
 
 func enter():
 	if !fsm.context.has(velocity_key):
