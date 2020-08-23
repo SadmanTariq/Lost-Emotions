@@ -17,6 +17,8 @@ extends "res://characters/enemies/states/motion/motion.gd"
 func physics_process(delta):
 	.physics_process(delta)
 	_check_direction()
+	if acting_body.is_on_wall():
+		direction = Direction.RIGHT if direction == Direction.LEFT else Direction.LEFT
 	
 	if acting_body.is_chasable():
 		fsm.change_to("Chasing")

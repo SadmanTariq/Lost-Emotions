@@ -31,6 +31,8 @@ func enter():
 
 func physics_process(_delta):
 	velocity = acting_body.move_and_slide(velocity)
+	if acting_body.is_on_floor():
+		fsm.context["jumps_left"] = 2
 
 func get_direction():
 	if Input.is_action_pressed("move_left"):

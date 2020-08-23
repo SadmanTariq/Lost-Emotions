@@ -15,7 +15,7 @@ func enter():
 func input(event: InputEvent):
 	if event.is_action_pressed("jump"):
 		fsm.context["velocity"].x = [jump_speed_x, -jump_speed_x][acting_body.move_direction]
-		fsm.context["jumps_left"] += 1
+#		fsm.context["jumps_left"] += 1
 		fsm.change_to("Jumping")
 	elif event.is_action_pressed(["move_right", "move_left"][acting_body.move_direction]):
 		fsm.change_to("Falling")

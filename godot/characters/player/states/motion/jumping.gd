@@ -1,11 +1,13 @@
 extends "res://characters/player/states/motion/aerial.gd"
 
 export var jump_speed = 200
+export(NodePath) var falling_state
 
 func enter():
 	.enter()
 	
-	var free_jump = acting_body.is_on_floor() or (acting_body.is_on_wall() and acting_body.walljump_unlocked)
+	var coyote = get_node(falling_state).coyote
+	var free_jump = acting_body.is_on_floor() or (acting_body.is_on_wall() and acting_body.walljump_unlocked) or coyote
 	if fsm.context["jumps_left"] <= 0 and !free_jump:
 		fsm.back()
 		return
