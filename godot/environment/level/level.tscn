@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://environment/level/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://environment/props/deathzone.tscn" type="PackedScene" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://environment/props/collectibles/grapple_collectible.tscn" type="PackedScene" id=10]
 [ext_resource path="res://environment/props/collectibles/wall_jump_collectible.tscn" type="PackedScene" id=11]
 [ext_resource path="res://environment/props/binoculars/binoculars.tscn" type="PackedScene" id=12]
+[ext_resource path="res://environment/props/dolphin/dolphin.tscn" type="PackedScene" id=13]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 31.6251, 16.7703 )
@@ -4197,3 +4198,6 @@ position = Vector2( 3104, -6976 )
 
 [node name="Target" type="Node2D" parent="Binocular/Binoculars8"]
 position = Vector2( -856, -24 )
+
+[node name="Dolphin" parent="." instance=ExtResource( 13 )]
+position = Vector2( 783.707, -5468.73 )
