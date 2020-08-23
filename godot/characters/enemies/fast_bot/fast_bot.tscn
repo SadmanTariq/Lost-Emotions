@@ -4,71 +4,72 @@
 [ext_resource path="res://characters/enemies/fast_bot/death.png" type="Texture" id=2]
 [ext_resource path="res://characters/enemies/enemy.tscn" type="PackedScene" id=3]
 
-[sub_resource type="AtlasTexture" id=18]
+[sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 1 )
 region = Rect2( 0, 0, 32, 64 )
 
-[sub_resource type="AtlasTexture" id=19]
+[sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 1 )
 region = Rect2( 32, 0, 32, 64 )
 
-[sub_resource type="AtlasTexture" id=20]
+[sub_resource type="AtlasTexture" id=3]
 atlas = ExtResource( 1 )
 region = Rect2( 0, 0, 32, 64 )
 
-[sub_resource type="AtlasTexture" id=21]
+[sub_resource type="AtlasTexture" id=4]
 atlas = ExtResource( 1 )
 region = Rect2( 32, 0, 32, 64 )
 
-[sub_resource type="AtlasTexture" id=22]
+[sub_resource type="AtlasTexture" id=5]
 atlas = ExtResource( 2 )
 region = Rect2( 0, 0, 32, 64 )
 
-[sub_resource type="AtlasTexture" id=23]
+[sub_resource type="AtlasTexture" id=6]
 atlas = ExtResource( 2 )
 region = Rect2( 32, 0, 32, 64 )
 
-[sub_resource type="AtlasTexture" id=24]
+[sub_resource type="AtlasTexture" id=7]
 atlas = ExtResource( 2 )
 region = Rect2( 64, 0, 32, 64 )
 
-[sub_resource type="AtlasTexture" id=25]
+[sub_resource type="AtlasTexture" id=8]
 atlas = ExtResource( 2 )
 region = Rect2( 96, 0, 32, 64 )
 
-[sub_resource type="AtlasTexture" id=26]
+[sub_resource type="AtlasTexture" id=9]
 atlas = ExtResource( 2 )
 region = Rect2( 128, 0, 32, 64 )
 
-[sub_resource type="AtlasTexture" id=27]
+[sub_resource type="AtlasTexture" id=10]
 atlas = ExtResource( 2 )
 region = Rect2( 160, 0, 32, 64 )
 
-[sub_resource type="SpriteFrames" id=17]
+[sub_resource type="SpriteFrames" id=11]
 animations = [ {
-"frames": [ SubResource( 18 ), SubResource( 19 ) ],
+"frames": [ SubResource( 1 ), SubResource( 2 ) ],
 "loop": true,
 "name": "chase",
 "speed": 20.0
 }, {
-"frames": [ SubResource( 20 ), SubResource( 21 ) ],
+"frames": [ SubResource( 3 ), SubResource( 4 ) ],
 "loop": true,
 "name": "walk",
 "speed": 8.0
 }, {
-"frames": [ SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ), SubResource( 26 ), SubResource( 27 ) ],
+"frames": [ SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ) ],
 "loop": false,
 "name": "death",
 "speed": 10.0
 } ]
 
 [node name="Enemy" instance=ExtResource( 3 )]
+chase_range = 300
 
 [node name="Body" parent="." index="0"]
 health = 1
 
 [node name="Sprite" type="AnimatedSprite" parent="." index="7"]
 scale = Vector2( 2, 2 )
-frames = SubResource( 17 )
+frames = SubResource( 11 )
 animation = "walk"
 playing = true

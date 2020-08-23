@@ -53,6 +53,8 @@ func _on_Chasing_state_entered():
 
 func _on_Dying_state_entered():
 	_change_anim("death")
+	$Hurtbox.queue_free()
+	$Hitbox.queue_free()
 
 
 func _on_Body_died():
