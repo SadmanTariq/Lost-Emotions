@@ -53,11 +53,13 @@ animations = [ {
 } ]
 
 [node name="WalljumpCollectible" instance=ExtResource( 2 )]
+explanation = "PRESS SPACE WHILE TOUCHING A WALL
+TO WALLJUMP"
 
 [node name="Action" parent="." index="1"]
 property = "walljump_unlocked"
 
 [node name="Sprite" type="AnimatedSprite" parent="." index="2"]
 frames = SubResource( 10 )
-frame = 1
+frame = 2
 playing = true

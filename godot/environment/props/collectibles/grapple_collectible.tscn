@@ -3,19 +3,19 @@
 [ext_resource path="res://environment/props/collectibles/collectibles.png" type="Texture" id=1]
 [ext_resource path="res://environment/props/collectibles/collectible.tscn" type="PackedScene" id=2]
 
-[sub_resource type="AtlasTexture" id=11]
+[sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 1 )
 region = Rect2( 0, 512, 96, 128 )
 
-[sub_resource type="AtlasTexture" id=12]
+[sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 1 )
 region = Rect2( 96, 512, 96, 128 )
 
-[sub_resource type="AtlasTexture" id=13]
+[sub_resource type="AtlasTexture" id=3]
 atlas = ExtResource( 1 )
 region = Rect2( 192, 512, 96, 128 )
 
-[sub_resource type="AtlasTexture" id=14]
+[sub_resource type="AtlasTexture" id=4]
 atlas = ExtResource( 1 )
 region = Rect2( 288, 512, 96, 128 )
 
@@ -41,7 +41,7 @@ region = Rect2( 384, 640, 96, 128 )
 
 [sub_resource type="SpriteFrames" id=10]
 animations = [ {
-"frames": [ SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ) ],
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ) ],
 "loop": true,
 "name": "default",
 "speed": 2.0
@@ -53,10 +53,13 @@ animations = [ {
 } ]
 
 [node name="GrappleCollectible" instance=ExtResource( 2 )]
+explanation = "PRESS J WHILE IN RANGE OF
+AN ANCHOR TO GRAPPLE"
 
 [node name="Action" parent="." index="1"]
 property = "grapple_unlocked"
 
 [node name="Sprite" type="AnimatedSprite" parent="." index="2"]
 frames = SubResource( 10 )
+frame = 1
 playing = true

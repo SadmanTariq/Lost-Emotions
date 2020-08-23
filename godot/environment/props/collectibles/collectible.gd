@@ -1,5 +1,10 @@
 extends StaticBody2D
 
+export(String, MULTILINE) var explanation = ""
+
+func _ready():
+	$Explanation/Label.text = explanation
+
 func hit(_dmg=0):
 	if has_node("Action"):
 		get_node("Action").do()

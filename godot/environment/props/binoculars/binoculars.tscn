@@ -14,7 +14,7 @@ uniform float alpha;
 
 void fragment(){
 	vec4 c = texture(TEXTURE, UV);
-	c.a *= alpha;
+	c.a *= alpha * 5.;
 	COLOR = c;
 }"
 custom_defines = ""
