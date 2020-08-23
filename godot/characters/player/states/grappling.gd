@@ -12,6 +12,10 @@ var anchor: Node2D
 var direction: Vector2
 
 func enter():
+	var active_anchors = get_tree().get_nodes_in_group("active_anchor")
+	if active_anchors.size() <= 0:
+		fsm.change_to("Walking")
+		return
 	anchor = get_tree().get_nodes_in_group("active_anchor")[0]
 	direction = (anchor.global_position - acting_body.global_position).normalized()
 	velocity = direction * start_speed
