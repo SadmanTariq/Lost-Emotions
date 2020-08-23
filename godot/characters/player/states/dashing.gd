@@ -7,7 +7,7 @@ export var speed = 2000
 
 var dash_available = true
 var direction: Vector2
-var acting_body: KinematicBody2D
+var acting_body: Player
 var velocity: Vector2
 var velocity_key = "velocity"
 

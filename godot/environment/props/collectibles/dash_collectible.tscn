@@ -1,0 +1,63 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://environment/props/collectibles/collectibles.png" type="Texture" id=1]
+[ext_resource path="res://environment/props/collectibles/collectible.tscn" type="PackedScene" id=2]
+
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 128, 96, 128 )
+
+[sub_resource type="AtlasTexture" id=13]
+atlas = ExtResource( 1 )
+region = Rect2( 96, 128, 96, 128 )
+
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 1 )
+region = Rect2( 192, 128, 96, 128 )
+
+[sub_resource type="AtlasTexture" id=15]
+atlas = ExtResource( 1 )
+region = Rect2( 288, 128, 96, 128 )
+
+[sub_resource type="AtlasTexture" id=16]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 640, 96, 128 )
+
+[sub_resource type="AtlasTexture" id=17]
+atlas = ExtResource( 1 )
+region = Rect2( 96, 640, 96, 128 )
+
+[sub_resource type="AtlasTexture" id=18]
+atlas = ExtResource( 1 )
+region = Rect2( 192, 640, 96, 128 )
+
+[sub_resource type="AtlasTexture" id=19]
+atlas = ExtResource( 1 )
+region = Rect2( 288, 640, 96, 128 )
+
+[sub_resource type="AtlasTexture" id=20]
+atlas = ExtResource( 1 )
+region = Rect2( 384, 640, 96, 128 )
+
+[sub_resource type="SpriteFrames" id=21]
+animations = [ {
+"frames": [ SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ) ],
+"loop": true,
+"name": "default",
+"speed": 10.0
+}, {
+"frames": [ SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ) ],
+"loop": false,
+"name": "break",
+"speed": 15.0
+} ]
+
+[node name="DashCollectible" instance=ExtResource( 2 )]
+
+[node name="Action" parent="." index="1"]
+property = "dash_unlocked"
+
+[node name="Sprite" type="AnimatedSprite" parent="." index="2"]
+frames = SubResource( 21 )
+frame = 3
+playing = true

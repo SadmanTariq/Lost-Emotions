@@ -6,6 +6,9 @@ export var jump_speed_x = 300
 var acting_body: Player
 
 func enter():
+	if !acting_body.walljump_unlocked:
+		fsm.back()
+		return
 	fsm.context["velocity"] = Vector2()
 #	fsm.context["jumps_left"] = max(1, fsm.context["jumps_left"])
 
