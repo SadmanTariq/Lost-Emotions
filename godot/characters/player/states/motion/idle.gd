@@ -9,6 +9,8 @@ func input(event: InputEvent):
 		fsm.change_to("TeleportOut")
 	if event.is_action_pressed("grapple"):
 		fsm.change_to("GrappleStarting")
+	if event.is_action_pressed("attack"):
+		fsm.change_to("Attacking")
 
 func physics_process(_delta):
 	var x = 0

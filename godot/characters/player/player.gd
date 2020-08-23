@@ -12,6 +12,11 @@ export var num_jumps = 1
 export var dash_unlocked = false
 export var move_direction = RIGHT setget _set_move_direction
 
+export var damage = 1
+export var combo_damage = 5
+
+var _in_combo = false
+
 var _grounded = false
 
 func _ready():
@@ -30,7 +35,27 @@ func _set_move_direction(value):
 	$DashParticles.direction = value
 	$GrappleLine.direction = value
 	$Camera.direction = value
+	$Hitbox.direction = value
+
+func hit(dmg=69420):
+	$Body.health -= dmg
 
 
+func _on_Hitbox_body_entered(body):
+	if body.has_method("hit"):
+		print("hit")
+		if _in_combo:
+			print("combo")
+		body.hit(combo_damage if _in_combo else damage)
 
 
+func _on_Attacking_combo_started():
+	_in_combo = true
+
+
+func _on_Attacking_finished():
+	_in_combo = false
+
+
+func _on_Body_died():
+	$StateMachine.change_to("Dying")

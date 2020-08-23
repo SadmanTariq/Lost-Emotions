@@ -54,7 +54,7 @@ __meta__ = {
 [node name="Resume" parent="Pause/Buttons" instance=ExtResource( 2 )]
 margin_left = 0.0
 margin_top = 82.0
-margin_right = 692.0
+margin_right = 691.0
 margin_bottom = 182.0
 rect_min_size = Vector2( 580, 100 )
 custom_styles/hover = ExtResource( 4 )
@@ -65,7 +65,7 @@ custom_styles/normal = ExtResource( 5 )
 [node name="Return_to_main" parent="Pause/Buttons" instance=ExtResource( 3 )]
 margin_left = 0.0
 margin_top = 202.0
-margin_right = 692.0
+margin_right = 691.0
 margin_bottom = 302.0
 rect_min_size = Vector2( 580, 100 )
 rect_scale = Vector2( 1, 1 )
