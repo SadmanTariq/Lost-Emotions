@@ -19,7 +19,7 @@ position = Vector2( 935.59, -4935.34 )
 
 [node name="Interface" type="CanvasLayer" parent="."]
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Interface"]
+[node name="Indicators" type="VBoxContainer" parent="Interface"]
 margin_left = 50.0
 margin_top = 50.0
 margin_right = 40.0
@@ -29,18 +29,18 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Dash" type="TextureRect" parent="Interface/VBoxContainer"]
+[node name="Dash" type="TextureRect" parent="Interface/Indicators"]
 margin_right = 64.0
 margin_bottom = 64.0
 texture = ExtResource( 4 )
 
-[node name="DoubleJump" type="TextureRect" parent="Interface/VBoxContainer"]
+[node name="DoubleJump" type="TextureRect" parent="Interface/Indicators"]
 margin_top = 68.0
 margin_right = 64.0
 margin_bottom = 132.0
 texture = ExtResource( 3 )
 
-[node name="Teleport" type="TextureRect" parent="Interface/VBoxContainer"]
+[node name="Teleport" type="TextureRect" parent="Interface/Indicators"]
 margin_top = 136.0
 margin_right = 64.0
 margin_bottom = 200.0
