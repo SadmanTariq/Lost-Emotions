@@ -51,9 +51,9 @@ scale_amount = 2.0
 
 [node name="Made by" type="Label" parent="."]
 margin_left = 19.4124
-margin_top = 547.679
+margin_top = 534.957
 margin_right = 1534.41
-margin_bottom = 618.679
+margin_bottom = 605.957
 custom_fonts/font = SubResource( 2 )
 text = "This game was made for the PB Game Jam 5 by:"
 __meta__ = {
@@ -61,10 +61,10 @@ __meta__ = {
 }
 
 [node name="Credits" type="HBoxContainer" parent="."]
-margin_top = 689.245
+margin_top = 614.41
 margin_right = 1920.0
-margin_bottom = 942.245
-custom_constants/separation = 26
+margin_bottom = 968.41
+custom_constants/separation = 66
 alignment = 1
 __meta__ = {
 "_edit_group_": true,
@@ -72,83 +72,86 @@ __meta__ = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Credits"]
-margin_left = 60.0
-margin_right = 657.0
-margin_bottom = 253.0
+margin_left = 20.0
+margin_right = 617.0
+margin_bottom = 354.0
 custom_constants/separation = 50
 alignment = 1
 
 [node name="Rikth" type="Label" parent="Credits/VBoxContainer"]
+margin_top = 50.0
 margin_right = 597.0
-margin_bottom = 51.0
+margin_bottom = 101.0
 custom_fonts/font = ExtResource( 3 )
 text = "Rikth Humayun - Lvl Design"
 
 [node name="Sadman" type="Label" parent="Credits/VBoxContainer"]
-margin_top = 101.0
+margin_top = 151.0
 margin_right = 597.0
-margin_bottom = 152.0
+margin_bottom = 202.0
 custom_fonts/font = ExtResource( 3 )
 text = "Sadman Tariq - Code"
 
 [node name="Masrur" type="Label" parent="Credits/VBoxContainer"]
-margin_top = 202.0
+margin_top = 252.0
 margin_right = 597.0
-margin_bottom = 253.0
+margin_bottom = 303.0
 custom_fonts/font = ExtResource( 3 )
 text = "Masrur Sakib - UI"
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="Credits"]
 margin_left = 683.0
 margin_right = 1293.0
-margin_bottom = 253.0
+margin_bottom = 354.0
 custom_constants/separation = 50
 alignment = 1
 
 [node name="Tahmid" type="Label" parent="Credits/VBoxContainer2"]
+margin_top = 50.0
 margin_right = 610.0
-margin_bottom = 51.0
+margin_bottom = 101.0
 custom_fonts/font = ExtResource( 3 )
 text = "Tahmid Abrar - Art & Music"
 
 [node name="Jacob" type="Label" parent="Credits/VBoxContainer2"]
-margin_top = 101.0
+margin_top = 151.0
 margin_right = 610.0
-margin_bottom = 152.0
+margin_bottom = 202.0
 custom_fonts/font = ExtResource( 3 )
 text = "Jacob Duncan - Art"
 
 [node name="Tashfin" type="Label" parent="Credits/VBoxContainer2"]
-margin_top = 202.0
+margin_top = 252.0
 margin_right = 610.0
-margin_bottom = 253.0
+margin_bottom = 303.0
 custom_fonts/font = ExtResource( 3 )
 text = "Tashfin Ruaid - Music"
 
 [node name="VBoxContainer3" type="VBoxContainer" parent="Credits"]
-margin_left = 1319.0
-margin_right = 1859.0
-margin_bottom = 253.0
+margin_left = 1359.0
+margin_right = 1899.0
+margin_bottom = 354.0
 custom_constants/separation = 50
 alignment = 1
 
 [node name="Mahdi" type="Label" parent="Credits/VBoxContainer3"]
+margin_top = 50.0
 margin_right = 540.0
-margin_bottom = 51.0
+margin_bottom = 101.0
 custom_fonts/font = ExtResource( 3 )
 text = "Mahdi Khan - Music"
 
 [node name="Jay" type="Label" parent="Credits/VBoxContainer3"]
-margin_top = 101.0
+margin_top = 151.0
 margin_right = 540.0
-margin_bottom = 152.0
+margin_bottom = 202.0
 custom_fonts/font = ExtResource( 3 )
 text = "Jay Goldfinch - Music"
 
-[node name="Tashfin" type="Label" parent="Credits/VBoxContainer3"]
-margin_top = 202.0
+[node name="Faiaz" type="Label" parent="Credits/VBoxContainer3"]
+margin_top = 252.0
 margin_right = 540.0
-margin_bottom = 253.0
+margin_bottom = 303.0
 custom_fonts/font = ExtResource( 3 )
 text = "Faiaz Sakib - Promo Art"
 
