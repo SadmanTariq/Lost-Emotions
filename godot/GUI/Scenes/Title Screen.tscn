@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://GUI/Fonts/font.tres" type="DynamicFont" id=1]
 [ext_resource path="res://GUI/Buttons/Button.tscn" type="PackedScene" id=2]
@@ -8,15 +8,9 @@
 [ext_resource path="res://gui/scene_changer/SceneChanger.tscn" type="PackedScene" id=6]
 [ext_resource path="res://GUI/Buttons/Quit.gd" type="Script" id=7]
 [ext_resource path="res://audio/title.wav" type="AudioStream" id=8]
+[ext_resource path="res://environment/level/background_blurred.png" type="Texture" id=9]
 
-[sub_resource type="Gradient" id=1]
-offsets = PoolRealArray( 0.00645161 )
-colors = PoolColorArray( 0.266667, 0.266667, 0.266667, 1 )
-
-[sub_resource type="GradientTexture" id=2]
-gradient = SubResource( 1 )
-
-[sub_resource type="TileSet" id=3]
+[sub_resource type="TileSet" id=1]
 0/name = "Tile_Variation2.png 0"
 0/texture = ExtResource( 4 )
 0/tex_offset = Vector2( 0, 0 )
@@ -82,19 +76,33 @@ __meta__ = {
 }
 
 [node name="TextureRect" type="TextureRect" parent="."]
-margin_right = 1938.0
-margin_bottom = 1090.0
-rect_rotation = 90.0
+margin_left = 1076.41
+margin_right = 3014.41
+margin_bottom = 552.0
+rect_rotation = 180.0
 rect_scale = Vector2( 0.554512, -1.85217 )
-texture = SubResource( 2 )
+texture = ExtResource( 9 )
 expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+margin_left = 2151.29
+margin_right = 4089.29
+margin_bottom = 552.0
+rect_rotation = 180.0
+rect_scale = Vector2( 0.554512, -1.85217 )
+texture = ExtResource( 9 )
+expand = true
+flip_h = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2( 309.659, 161.27 )
-tile_set = SubResource( 3 )
+tile_set = SubResource( 1 )
 format = 1
 tile_data = PoolIntArray( 196613, 3, 0, 196614, 0, 0, 196615, 0, 0, 196616, 0, 0, 196617, 0, 0, 196618, 0, 0, 196619, 0, 0, 196620, 0, 0, 196621, 0, 0, 196622, 2, 0, 262149, 0, 0, 262158, 0, 0, 327685, 0, 0, 327694, 0, 0, 393221, 0, 0, 393222, 1, 0, 393223, 0, 0, 393224, 1610612737, 0, 393225, 0, 0, 393226, 0, 0, 393227, 1610612737, 0, 393228, 0, 0, 393229, 1, 0, 393230, 0, 0, 458757, 0, 0, 458766, 0, 0, 524293, 0, 0, 524302, 0, 0, 589829, -1073741821, 0, 589830, 0, 0, 589831, 0, 0, 589832, 0, 0, 589833, 0, 0, 589834, 0, 0, 589835, 0, 0, 589836, 0, 0, 589837, 0, 0, 589838, 1610612739, 0 )
 
