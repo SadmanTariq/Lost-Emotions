@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://gui/fonts/font.tres" type="DynamicFont" id=1]
 [ext_resource path="res://gui/buttons/button.tscn" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://gui/buttons/quit.gd" type="Script" id=7]
 [ext_resource path="res://audio/title.wav" type="AudioStream" id=8]
 [ext_resource path="res://environment/level/background_blurred.png" type="Texture" id=9]
+[ext_resource path="res://audio/button_sound.wav" type="AudioStream" id=10]
 
 [sub_resource type="TileSet" id=1]
 0/name = "Tile_Variation2.png 0"
@@ -67,6 +68,16 @@
 3/shape_one_way_margin = 0.0
 3/shapes = [  ]
 3/z_index = 0
+
+[sub_resource type="GDScript" id=2]
+script/source = "extends AudioStreamPlayer
+
+func _on_Quit_button_down():
+	play()
+
+func _on_Play_button_down():
+	play()
+"
 
 [node name="Title Screen" type="Control"]
 anchor_right = 1.0
@@ -148,5 +159,11 @@ script = ExtResource( 5 )
 stream = ExtResource( 8 )
 autoplay = true
 bus = "Music"
+
+[node name="ButtonSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+script = SubResource( 2 )
+[connection signal="button_down" from="TileMap/Quit" to="ButtonSound" method="_on_Quit_button_down"]
 [connection signal="pressed" from="TileMap/Quit" to="TileMap/Quit" method="_on_Quit_pressed"]
+[connection signal="button_down" from="TileMap/Play" to="ButtonSound" method="_on_Play_button_down"]
 [connection signal="pressed" from="TileMap/Play" to="TileMap/Play" method="_on_Play_pressed"]
