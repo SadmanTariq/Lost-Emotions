@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/YOU FUCKING WIN!!!.png-0183466b060e449c70e240d8a27e0d92.stex"
+path="res://.import/YOU FUCKING WIN!!!.png-33352c6f560ff9ab32aa0d6d1db995cb.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://GUI/images/YOU FUCKING WIN!!!.png"
-dest_files=[ "res://.import/YOU FUCKING WIN!!!.png-0183466b060e449c70e240d8a27e0d92.stex" ]
+source_file="res://gui/images/YOU FUCKING WIN!!!.png"
+dest_files=[ "res://.import/YOU FUCKING WIN!!!.png-33352c6f560ff9ab32aa0d6d1db995cb.stex" ]
 
 [params]
 
