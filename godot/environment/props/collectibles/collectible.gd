@@ -1,5 +1,6 @@
 extends StaticBody2D
 
+signal used
 export(String, MULTILINE) var explanation = ""
 
 func _ready():
@@ -12,3 +13,4 @@ func hit(_dmg=0):
 		get_node("Sprite").play("break")
 	if has_node("Shape"):
 		$Shape.queue_free()
+	emit_signal("used")

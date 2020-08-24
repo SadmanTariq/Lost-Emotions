@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://environment/level/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://environment/props/deathzone.tscn" type="PackedScene" id=2]
@@ -15,6 +15,8 @@
 [ext_resource path="res://environment/props/dolphin/dolphin.tscn" type="PackedScene" id=13]
 [ext_resource path="res://environment/level/background_blurred.png" type="Texture" id=14]
 [ext_resource path="res://environment/props/proximity_text.tscn" type="PackedScene" id=15]
+[ext_resource path="res://audio/level1.wav" type="AudioStream" id=16]
+[ext_resource path="res://audio/level2.wav" type="AudioStream" id=17]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 31.6251, 16.7703 )
@@ -30,6 +32,16 @@ extents = Vector2( 32, 32 )
 
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 160, 15.3413 )
+
+[sub_resource type="GDScript" id=6]
+script/source = "extends AudioStreamPlayer
+
+export(AudioStream) var level2
+
+func _on_WalljumpCollectible_used():
+	stream = level2
+	play()
+"
 
 [node name="Level" type="Node2D"]
 __meta__ = {
@@ -4245,3 +4257,11 @@ abilities to access"
 [node name="ProximityText5" parent="Tutorials" instance=ExtResource( 15 )]
 position = Vector2( -2642.46, 420.544 )
 text = "dashing replenishes jumps"
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 16 )
+autoplay = true
+bus = "Music"
+script = SubResource( 6 )
+level2 = ExtResource( 17 )
+[connection signal="used" from="Collectibles/WalljumpCollectible" to="Music" method="_on_WalljumpCollectible_used"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://GUI/Fonts/font.tres" type="DynamicFont" id=1]
 [ext_resource path="res://GUI/Buttons/Button.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://GUI/Buttons/Play.gd" type="Script" id=5]
 [ext_resource path="res://gui/scene_changer/SceneChanger.tscn" type="PackedScene" id=6]
 [ext_resource path="res://GUI/Buttons/Quit.gd" type="Script" id=7]
+[ext_resource path="res://audio/title.wav" type="AudioStream" id=8]
 
 [sub_resource type="Gradient" id=1]
 offsets = PoolRealArray( 0.00645161 )
@@ -130,5 +131,10 @@ rect_scale = Vector2( 0.999967, 1.06213 )
 script = ExtResource( 5 )
 
 [node name="SceneChanger" parent="TileMap/Play" instance=ExtResource( 6 )]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+autoplay = true
+bus = "Music"
 [connection signal="pressed" from="TileMap/Quit" to="TileMap/Quit" method="_on_Quit_pressed"]
 [connection signal="pressed" from="TileMap/Play" to="TileMap/Play" method="_on_Play_pressed"]
