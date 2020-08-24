@@ -21,6 +21,7 @@ func enter():
 		acting_body.move_direction = acting_body.LEFT
 	
 	$Timer.start(duration)
+	$AudioStreamPlayer.play()
 
 func _on_Timer_timeout():
 	fsm.change_to("Grappling")

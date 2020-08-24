@@ -18,10 +18,12 @@ func input(event: InputEvent):
 		emit_signal("combo_started")
 		in_combo = true
 		$AnimationTimer.start(combo_duration)
+		$ComboSound.play()
 
 func enter():
 	$AnimationTimer.start(duration)
 	$ComboTimer.start(duration - combo_opening)
+	$AttackSound.play()
 	in_combo = false
 
 func physics_process(delta):
