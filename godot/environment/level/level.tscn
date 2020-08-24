@@ -4217,6 +4217,12 @@ position = Vector2( 5264, -5888 )
 [node name="Target" type="Node2D" parent="Binocular/Binoculars7"]
 position = Vector2( 2096, -208 )
 
+[node name="Binoculars11" parent="Binocular" instance=ExtResource( 12 )]
+position = Vector2( 8719.63, -6207.18 )
+
+[node name="Target" type="Node2D" parent="Binocular/Binoculars11"]
+position = Vector2( 325.405, 849.832 )
+
 [node name="Binoculars8" parent="Binocular" instance=ExtResource( 12 )]
 position = Vector2( 3104, -6976 )
 
@@ -4270,6 +4276,7 @@ script = SubResource( 6 )
 level2 = ExtResource( 17 )
 
 [node name="KillPlane" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 script = ExtResource( 18 )
 
