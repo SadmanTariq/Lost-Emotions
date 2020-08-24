@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://environment/level/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://environment/props/deathzone.tscn" type="PackedScene" id=2]
@@ -17,6 +17,7 @@
 [ext_resource path="res://environment/props/proximity_text.tscn" type="PackedScene" id=15]
 [ext_resource path="res://audio/level1.wav" type="AudioStream" id=16]
 [ext_resource path="res://audio/level2.wav" type="AudioStream" id=17]
+[ext_resource path="res://environment/level/kill_plane.gd" type="Script" id=18]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 31.6251, 16.7703 )
@@ -42,6 +43,9 @@ func _on_WalljumpCollectible_used():
 	stream = level2
 	play()
 "
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 9270.06, 5091.11 )
 
 [node name="Level" type="Node2D"]
 __meta__ = {
@@ -4264,4 +4268,13 @@ autoplay = true
 bus = "Music"
 script = SubResource( 6 )
 level2 = ExtResource( 17 )
+
+[node name="KillPlane" type="Area2D" parent="."]
+collision_layer = 0
+script = ExtResource( 18 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KillPlane"]
+position = Vector2( 2601.99, -3414.3 )
+shape = SubResource( 7 )
 [connection signal="used" from="Collectibles/WalljumpCollectible" to="Music" method="_on_WalljumpCollectible_used"]
+[connection signal="body_exited" from="KillPlane" to="KillPlane" method="_on_KillPlane_body_exited"]
