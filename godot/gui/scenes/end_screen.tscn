@@ -1,9 +1,9 @@
 [gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://gui/images/YOU FUCKING WIN!!!.png" type="Texture" id=1]
+[ext_resource path="res://gui/images/win.png" type="Texture" id=1]
 [ext_resource path="res://gui/images/core.png" type="Texture" id=2]
-[ext_resource path="res://GUI/Fonts/gamepixies.tres" type="DynamicFont" id=3]
-[ext_resource path="res://GUI/Fonts/Gamepixies-8MO6n.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://gui/fonts/gamepixies.tres" type="DynamicFont" id=3]
+[ext_resource path="res://gui/fonts/gamepixies-8mo6n.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://audio/end.wav" type="AudioStream" id=5]
 
 [sub_resource type="GradientTexture" id=1]

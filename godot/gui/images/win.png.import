@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/op.png-6cf73a293aca295b98d4daced6b0e1b0.stex"
+path="res://.import/win.png-e0d6f76ee2ff9f8065e35eff48584643.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://gui/images/op.png"
-dest_files=[ "res://.import/op.png-6cf73a293aca295b98d4daced6b0e1b0.stex" ]
+source_file="res://gui/images/win.png"
+dest_files=[ "res://.import/win.png-e0d6f76ee2ff9f8065e35eff48584643.stex" ]
 
 [params]
 

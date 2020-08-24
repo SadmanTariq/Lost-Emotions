@@ -4,7 +4,7 @@
 [ext_resource path="res://environment/props/dolphin/particle.png" type="Texture" id=2]
 [ext_resource path="res://environment/props/dolphin/core.png" type="Texture" id=3]
 [ext_resource path="res://environment/props/dolphin/dolphin.gd" type="Script" id=4]
-[ext_resource path="res://GUI/scene_changer/SceneChanger.tscn" type="PackedScene" id=5]
+[ext_resource path="res://gui/scene_changer/scene_changer.tscn" type="PackedScene" id=5]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 1 )
