@@ -4,7 +4,7 @@
 [ext_resource path="res://environment/props/binoculars/binoculars.gd" type="Script" id=2]
 [ext_resource path="res://GUI/Fonts/BACKTO1982.TTF" type="DynamicFontData" id=3]
 
-[sub_resource type="CircleShape2D" id=4]
+[sub_resource type="CircleShape2D" id=1]
 radius = 130.285
 
 [sub_resource type="Shader" id=2]
@@ -23,12 +23,12 @@ custom_defines = ""
 shader = SubResource( 2 )
 shader_param/alpha = 0.0
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=4]
 size = 30
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 3 )
 
-[sub_resource type="GDScript" id=6]
+[sub_resource type="GDScript" id=5]
 script/source = "extends Label
 
 var alpha setget _set_alpha
@@ -44,7 +44,7 @@ script = ExtResource( 2 )
 [node name="TooltipTween" type="Tween" parent="."]
 
 [node name="Shape" type="CollisionShape2D" parent="."]
-shape = SubResource( 4 )
+shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
@@ -55,9 +55,9 @@ margin_left = 37.0412
 margin_top = -60.613
 margin_right = 136.041
 margin_bottom = -39.613
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 4 )
 text = "hold e"
-script = SubResource( 6 )
+script = SubResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

@@ -76,9 +76,10 @@ __meta__ = {
 }
 
 [node name="TextureRect" type="TextureRect" parent="."]
-margin_left = 1076.41
-margin_right = 3014.41
-margin_bottom = 552.0
+margin_left = 1128.19
+margin_top = -8.65039
+margin_right = 3171.19
+margin_bottom = 554.35
 rect_rotation = 180.0
 rect_scale = Vector2( 0.554512, -1.85217 )
 texture = ExtResource( 9 )
@@ -88,9 +89,10 @@ __meta__ = {
 }
 
 [node name="TextureRect2" type="TextureRect" parent="."]
-margin_left = 2151.29
-margin_right = 4089.29
-margin_bottom = 552.0
+margin_left = 2261.6
+margin_top = -7.86475
+margin_right = 4304.6
+margin_bottom = 555.135
 rect_rotation = 180.0
 rect_scale = Vector2( 0.554512, -1.85217 )
 texture = ExtResource( 9 )
