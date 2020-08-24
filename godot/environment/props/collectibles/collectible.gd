@@ -13,4 +13,5 @@ func hit(_dmg=0):
 		get_node("Sprite").play("break")
 	if has_node("Shape"):
 		$Shape.queue_free()
+	$GlassBreakSound.play()
 	emit_signal("used")

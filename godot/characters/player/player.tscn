@@ -579,11 +579,6 @@ func _on_Player_touched_ground():
 [node name="Player" type="KinematicBody2D"]
 collision_mask = 0
 script = ExtResource( 7 )
-num_jumps = 1
-dash_unlocked = true
-teleport_unlocked = true
-walljump_unlocked = true
-grapple_unlocked = true
 
 [node name="Body" type="Node" parent="."]
 script = ExtResource( 31 )
