@@ -11,12 +11,12 @@
 [ext_resource path="res://characters/enemies/states/falling.gd" type="Script" id=9]
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 32.0
-height = 64.0
+radius = 19.8094
+height = 76.9332
 
 [sub_resource type="CapsuleShape2D" id=2]
-radius = 39.649
-height = 62.9042
+radius = 24.3778
+height = 70.2491
 
 [node name="Enemy" type="KinematicBody2D"]
 collision_layer = 2
@@ -74,13 +74,14 @@ collision_mask = 1048575
 script = ExtResource( 4 )
 
 [node name="Hurtbox" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 4.78403 )
 shape = SubResource( 1 )
 
 [node name="Hitbox" type="Area2D" parent="."]
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2( 0, -5.46583 )
+position = Vector2( 0, 0.544573 )
 shape = SubResource( 2 )
 [connection signal="knocked_back" from="." to="." method="_on_Enemy_knocked_back"]
 [connection signal="died" from="Body" to="." method="_on_Body_died"]
