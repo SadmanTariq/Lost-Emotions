@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/glass_breaking.ogg-a6387a8f211da90b830da722c0ce5ca2.oggstr"
+
+[deps]
+
+source_file="res://audio/glass_breaking.ogg"
+dest_files=[ "res://.import/glass_breaking.ogg-a6387a8f211da90b830da722c0ce5ca2.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

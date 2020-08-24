@@ -15,6 +15,7 @@ func _process(_delta):
 func enter():
 	acting_body.global_position = respawn_coords
 	$Timer.start(duration)
+	$AudioStreamPlayer.play()
 
 
 func _on_Timer_timeout():

@@ -84,4 +84,6 @@ func _on_Attacking_finished():
 
 
 func _on_Body_died():
-	$StateMachine.change_to("Dying")
+	if $StateMachine.state != $StateMachine/Dying:
+		if $StateMachine.state != $StateMachine/Respawning:
+			$StateMachine.change_to("Dying")
